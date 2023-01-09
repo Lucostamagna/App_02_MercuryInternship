@@ -9,6 +9,7 @@
  * The app navigation resides in ./app/navigators, so head over there
  * if you're interested in adding screens and navigators.
  */
+
 import "./i18n"
 import "./utils/ignoreWarnings"
 import { useFonts } from "expo-font"
@@ -65,6 +66,7 @@ interface AppProps {
   hideSplashScreen: () => Promise<void>
 }
 
+
 /**
  * This is the root component of our app.
  */
@@ -100,6 +102,7 @@ function App(props: AppProps) {
     prefixes: [prefix],
     config,
   }
+
 
   // otherwise, we're ready to render the app
   return (

@@ -19,6 +19,7 @@ import {
   WelcomeScreen,
 } from "../screens"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
+import { ErrorBoundary } from '../screens/ErrorScreen/ErrorBoundary';
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -58,7 +59,8 @@ const AppStack = observer(function AppStack() {
       screenOptions={{ headerShown: false }}
     >
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      {/** 🔥 Your screens go here */}
+        
+                                                  
     </Stack.Navigator>
   )
 })

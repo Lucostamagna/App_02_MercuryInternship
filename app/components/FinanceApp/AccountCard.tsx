@@ -10,10 +10,14 @@ import {
 } from "react-native"
 import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
-
+import { account } from "./AccountInterface"
+ 
+interface Prop {
+  accountData : account
+}
 const { width } = Dimensions.get("screen")
 
-const AccountCard = () => {
+const AccountCard = ({accountData}:Prop) => {
   const theme = useColorScheme()
   return (
     <View style={{ ...$cardContainer, backgroundColor: colors[theme].cardBackground }}>

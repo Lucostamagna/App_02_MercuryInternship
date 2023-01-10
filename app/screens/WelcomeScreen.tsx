@@ -4,9 +4,11 @@ import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
 import {
   Text,
 } from "../components"
+import TransactionCard from "../components/FinanceApp/TransactionCard"
 import { isRTL } from "../i18n"
 import { colors, spacing } from "../theme"
 import { useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
+import AccountCard from '../components/FinanceApp/AccountCard';
 
 const welcomeLogo = require("../../assets/images/logo.png")
 const welcomeFace = require("../../assets/images/welcome-face.png")
@@ -19,7 +21,8 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
 
   return (
     <View style={$container}>
-      <View style={$topContainer}>
+      <AccountCard/>
+      {/* <View style={$topContainer}>
         <Image style={$welcomeLogo} source={welcomeLogo} resizeMode="contain" />
         <Text
           testID="welcome-heading"
@@ -33,7 +36,7 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
 
       <View style={[$bottomContainer, $bottomContainerInsets]}>
         <Text tx="welcomeScreen.postscript" size="md" />
-      </View>
+      </View> */}
     </View>
   )
 })

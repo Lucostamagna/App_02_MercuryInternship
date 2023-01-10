@@ -17,6 +17,7 @@ const palette = {
   primary400: "#D28468",
   primary500: "#C76542",
   primary600: "#A54F31",
+  primary700:"#16110D",
 
   secondary100: "#DCDDE9",
   secondary200: "#BCC0D6",
@@ -51,9 +52,11 @@ export const colors = {
   /**
    * The default text color in many components.
    */
-  text: palette.neutral800,
+  text: palette.primary700,
+  CardActivatedText : "#FEFEFE", 
   textDark: "#FEFEFE",
   description: "#C4C4C4",
+  menuIcons: "#DCDCDC",
   /**
    * Secondary text information.
    */

@@ -1,0 +1,53 @@
+
+
+{
+    "accounts": [
+      {
+        "id": "1234-4567-3456-3456",
+        "currentBalance": 76451.0
+      },
+      {
+        "id": "1234-4567-3456-3457",
+        "currentBalance": 499.0
+      }
+    ],
+
+
+    "transactions": [
+      {
+        
+        "date": "20th May, 18:39",
+        "amount": -345.0,
+        "coin": "EUR"
+        
+      },
+      {
+       
+        "date": "15th May, 20:56",
+        "amount": -1158.0,
+        "coin": "EUR"
+        
+      },
+      {
+         
+        "date": "14th May, 16:00",
+        "amount": -813.0,
+        "coin": "EUR"
+       
+      },
+      {
+        
+        "date": "11th May, 09:26",
+        "amount": 24500.0,
+        "coin": "USD"
+    
+      },
+      {
+        
+        "date": "03rd May, 12:06",
+        "amount": 11215.0,
+        "coin": "USD"
+        
+      }
+    ]
+}

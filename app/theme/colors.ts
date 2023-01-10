@@ -2,7 +2,7 @@
 
 const palette = {
   neutral100: "#FFFFFF",
-  neutral200: "#523CF8",
+  neutral200: "#F4F2F1",
   neutral300: "#D7CEC9",
   neutral400: "#B6ACA6",
   neutral500: "#978F8A",
@@ -52,6 +52,8 @@ export const colors = {
    * The default text color in many components.
    */
   text: palette.neutral800,
+  textDark: "#FEFEFE",
+  description: "#C4C4C4",
   /**
    * Secondary text information.
    */
@@ -81,4 +83,32 @@ export const colors = {
    *
    */
   errorBackground: palette.angry100,
+
+
+  dark:{
+    background: "#16110D",
+    cardBackground: "#2F2E33",
+    description: "#646464",
+    text:"#FEFEFE",
+    border: "#646464",
+    id: "#646464",
+    currency: "#646464",
+    icon: "#646464"
+  },
+
+  light:{
+    background: "#523CF8",
+    cardBackground: "#FFFFFF",
+    description: "#646464",
+    text:"#16110D",
+    border: "#DCDCDC",
+    id: "#16110D",
+    currency: "#16110D",
+    icon: "#DCDCDC"
+  },
+
+
+  orangeBackground: "#F76654",
+  violetBackground: "#523CF8",
+  whiteBackground: "#FFFFFF",
 }

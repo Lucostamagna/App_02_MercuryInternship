@@ -15,12 +15,10 @@ import { observer } from "mobx-react-lite"
 import React from "react"
 import { useColorScheme } from "react-native"
 import Config from "../config"
-import {
-  WelcomeScreen,
-} from "../screens"
+import {WelcomeScreen} from "../screens/WelcomeScreen"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { ErrorBoundary } from '../screens/ErrorScreen/ErrorBoundary';
-
+import AccountScreen from '../screens/AccountScreen';
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
  * as well as what properties (if any) they might take when navigating to them.
@@ -35,7 +33,7 @@ import { ErrorBoundary } from '../screens/ErrorScreen/ErrorBoundary';
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Welcome: undefined
+  Account: undefined
   // 🔥 Your screens go here
 }
 
@@ -58,7 +56,7 @@ const AppStack = observer(function AppStack() {
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
     >
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="Account" component={AccountScreen} />
         
                                                   
     </Stack.Navigator>

@@ -10,12 +10,16 @@ import {
 } from "react-native"
 import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
-
 import { account } from "./AccountInterface"
+import { Data } from "./AccountInterface"
+import img1 from "../images/dot.png"
+
+
 
 interface Prop {
   accountData: account
 }
+
 const { width } = Dimensions.get("screen")
 
 const AccountCard = ({ accountData }: Prop) => {
@@ -25,11 +29,18 @@ const AccountCard = ({ accountData }: Prop) => {
       <View style={$sectionContainer}>
         <View>
           <Text style={{ ...$cardTitle, color: colors[theme].text }}> Current Account </Text>
-          <Text style={{ ...$cardId, color: colors[theme].description }}> hoa</Text>
+          <Text style={{ ...$cardId, color: colors[theme].description }}> hh</Text>
         </View>
         <View style={$logoContainer}>
           {/* Pressable doesn't add the opacity animation on press */}
-          <Pressable style={$logo}></Pressable>
+          <Pressable style={$logo}> 
+          <Image 
+          source={img1}
+          
+          >
+
+          </Image>
+          </Pressable>
         </View>
       </View>
       <View style={$currencyContainer}>
@@ -123,3 +134,4 @@ const $balanceAccount: TextStyle = {
 const $descriptionText: TextStyle = {
   fontSize: 15,
 }
+

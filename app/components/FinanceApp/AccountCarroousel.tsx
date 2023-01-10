@@ -25,7 +25,7 @@ showsHorizontalScrollIndicator={false}
 horizontal={true}
 data={accounts}
 renderItem={renderItem}
-keyExtractor={(account)=>account.id}
+
 
 
 

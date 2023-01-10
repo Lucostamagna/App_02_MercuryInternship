@@ -10,25 +10,26 @@ import {
 } from "react-native"
 import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
+
 import { account } from "./AccountInterface"
- 
+
 interface Prop {
-  accountData : account
+  accountData: account
 }
 const { width } = Dimensions.get("screen")
 
-const AccountCard = ({accountData}:Prop) => {
+const AccountCard = ({ accountData }: Prop) => {
   const theme = useColorScheme()
   return (
     <View style={{ ...$cardContainer, backgroundColor: colors[theme].cardBackground }}>
       <View style={$sectionContainer}>
         <View>
           <Text style={{ ...$cardTitle, color: colors[theme].text }}> Current Account </Text>
-          <Text style={{ ...$cardId, color: colors[theme].description }}> PEDIR EL ID</Text>
+          <Text style={{ ...$cardId, color: colors[theme].description }}> hoa</Text>
         </View>
         <View style={$logoContainer}>
           {/* Pressable doesn't add the opacity animation on press */}
-          <Pressable style={$logo}>{/* <Image source={Img}> </Image> */}</Pressable>
+          <Pressable style={$logo}></Pressable>
         </View>
       </View>
       <View style={$currencyContainer}>

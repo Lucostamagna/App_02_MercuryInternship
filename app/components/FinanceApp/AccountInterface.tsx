@@ -1,28 +1,29 @@
-import React, {useState} from "react";
-import axios from "axios";
+import React, { useState } from "react"
+import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
-import { useEffect } from 'react';
-import { View } from "react-native";
+import { useEffect } from "react"
+import { View } from "react-native"
+import Img2 from "../images/CardIcon.png"
+import Img3 from "../images/RestaurantIcon.png"
+import Img4 from "../images/TravelltIcon.png"
+import Img5 from "../images/ConstructionIcon.png"
+import Img6 from "../images/PersonIcon.png"
+
 
 
 export interface account {
-    id: string
-    currentBalance: number
-  }
-  
-  export interface transaction {
-    id: string
-    title: string
-    date: string
-    amount: number
-    coin: string
-    img: any
-  }
+  id: string
+  currentBalance: number
+}
 
-
-
-
-
+export interface transaction {
+  id: string
+  title: string
+  date: string
+  amount: number
+  coin: string
+  img: any
+}
 const mock = new MockAdapter(axios)
 
 mock.onGet("/accounts").reply(200, {
@@ -32,14 +33,13 @@ mock.onGet("/accounts").reply(200, {
       currentBalance: 76451.0,
     },
     {
-        id: "1234-4567-3456-3456",
-        currentBalance: 76451.0,
+      id: "1234-4567-3456-3456",
+      currentBalance: 76451.0,
     },
     {
-        id: "1234-4567-3456-3456",
-        currentBalance: 76451.0,
+      id: "1234-4567-3456-3456",
+      currentBalance: 76451.0,
     },
-    
   ],
 })
 
@@ -51,7 +51,7 @@ mock.onGet("/transactions").reply(200, {
       date: "20th May, 18:39",
       amount: -345.0,
       coin: "EUR",
-      
+      img: Img2,
     },
     {
       id: `"Francois" Restaurant Dinner`,
@@ -59,7 +59,7 @@ mock.onGet("/transactions").reply(200, {
       date: "15th May, 20:56",
       amount: -1158.0,
       coin: "EUR",
-      
+      img:Img3
     },
     {
       id: `"AirMax" Travel to Paris`,
@@ -67,7 +67,7 @@ mock.onGet("/transactions").reply(200, {
       date: "14th May, 16:00",
       amount: -813.0,
       coin: "EUR",
-      
+      img:Img4
     },
     {
       id: `Construction ltd`,
@@ -75,7 +75,7 @@ mock.onGet("/transactions").reply(200, {
       date: "11th May, 09:26",
       amount: 24500.0,
       coin: "USD",
-      
+      img:Img5
     },
     {
       id: `Robert Smith`,
@@ -83,15 +83,13 @@ mock.onGet("/transactions").reply(200, {
       date: "03rd May, 12:06",
       amount: 11215.0,
       coin: "USD",
-      
+      img:Img6
     },
   ],
 })
 export function Data() {
   const [accounts, setAccounts] = useState<account[]>([])
   const [transactions, setTransactions] = useState<transaction[]>([])
-
-  
 
   useEffect(() => {
     try {
@@ -105,9 +103,5 @@ export function Data() {
       console.log(error)
     }
   }, [])
-  return(
-    <View>
-
-    </View>
-  )
+  
 }

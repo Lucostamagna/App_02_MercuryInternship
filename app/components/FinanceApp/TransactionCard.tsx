@@ -1,48 +1,69 @@
-import React from 'react'
-import { View, useColorScheme, ViewStyle, Text, TextStyle } from 'react-native';
-import { transaction } from './AccountInterface';
-import {colors, spacing, typography} from "../../theme"
-
-
-
-
-
-
-interface TProps{
-  transactionData:transaction
-  Id:boolean
+import React from "react"
+import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from 'react-native';
+import { transaction } from "./AccountInterface"
+import { colors, spacing, typography } from "../../theme"
+import { Data } from "./AccountInterface";
+interface TProps {
+  transactionData: transaction
+  Id: boolean
 }
 
-const TransactionCard = ({transactionData, Id}:TProps) => {
-const theme = useColorScheme()
-  return ( 
-    <View style= {$CardContainer}>
-   <View style={$cardIcon}>
-<Text> -</Text>
-   </View>
-   <View style={Id ? $conteinerId : { ...$conteinerText, borderColor: colors[theme].border}}>
-<Text style={{...$transactionTitle, color:colors[theme].text}}> titulo</Text>
-<Text style={{...$transactionData, color:colors [theme].description}}> data de trans</Text>
+const TransactionCard = ({ transactionData, Id }: TProps) => {
+  const theme = useColorScheme()
+  const colorCode = (n:number) => {
+    let color = ""
+    n > 0 ? (color = "#523CF8") : (color = "#F76654")
+    return color
+  }
+  return (
+    <View style={$CardContainer}>
+      <View style={$cardIcon}>
+      <Image source={transactionData.img}></Image>
+      </View>
 
-    
-   </View>
-   <View>
-    
-   </View>
+      <View style={Id ? $conteinerId : { ...$conteinerText, borderColor: colors[theme].border }}>
+        <Text style={{ ...$transactionTitle, color: colors[theme].text }}>
+          {" "}
+          {transactionData.title}
+        </Text>
 
+        <Text style={{ ...$transactionData, color: colors[theme].description }}>
+          {" "}
+          {transactionData.date}
+        </Text>
+      </View>
+
+      <View style={
+        Id ? $conteinerRightId : { ...$conteinerText, borderColor: colors[theme].border }}>
+        <Text
+          style={{
+            textAlign: "right",
+            lineHeight: 15,
+            fontSize: 12,
+            fontFamily: typography.primary.semiBold,
+            color: colorCode(transactionData.amount),
+          }}
+        >
+          {transactionData.amount > 0
+            ? `+${transactionData.amount.toFixed(2)}`
+            : `${transactionData.amount.toFixed(2)}`}
+        </Text>
+        <Text style={{...$TextRight, color:colors[theme].description}}>
+           {transactionData.coin}
+           </Text>
+      </View>
     </View>
   )
 }
 
-export default TransactionCard;
+export default TransactionCard
 
 const $CardContainer: ViewStyle = {
   display: "flex",
   flexDirection: "row",
-  backgroundColor:'red',
   marginBottom: spacing.tiny,
 }
-const $cardIcon:ViewStyle={
+const $cardIcon: ViewStyle = {
   marginRight: spacing.medium,
   backgroundColor: colors.orangeBackground,
   width: 30,
@@ -52,25 +73,35 @@ const $cardIcon:ViewStyle={
   justifyContent: "center",
   alignItems: "center",
 }
-const $conteinerId:ViewStyle={
+const $conteinerId: ViewStyle = {
+  width: "62%",
+}
+const $conteinerRightId: ViewStyle ={
   width: "20%",
 }
-const $conteinerText:ViewStyle={
-  width: "20%",
+const $conteinerText: ViewStyle = {
+  width: "62%",
   borderBottomWidth: 1,
   borderColor: "#DCDCDC",
   paddingBottom: 13,
 }
-const $transactionTitle:TextStyle={
+const $transactionTitle: TextStyle = {
   textAlign: "left",
   lineHeight: 15,
   fontSize: 12,
   fontFamily: typography.primary.semiBold,
 }
-const $transactionData:TextStyle={
+const $transactionData: TextStyle = {
   textAlign: "left",
   lineHeight: 15,
   fontSize: 12,
   fontFamily: typography.primary.semiBold,
-  color: colors.description
+  
+}
+const $TextRight: TextStyle={
+  textAlign: "right",
+  lineHeight: 15,
+  fontSize: 12,
+  fontFamily: typography.primary.semiBold,
+  color: colors.description,
 }

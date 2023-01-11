@@ -14,8 +14,6 @@ import { account } from "./AccountInterface"
 import { Data } from "./AccountInterface"
 import img1 from "../images/dot.png"
 
-
-
 interface Prop {
   accountData: account
 }
@@ -33,13 +31,8 @@ const AccountCard = ({ accountData }: Prop) => {
         </View>
         <View style={$logoContainer}>
           {/* Pressable doesn't add the opacity animation on press */}
-          <Pressable style={$logo}> 
-          <Image 
-          source={img1}
-          
-          >
-
-          </Image>
+          <Pressable style={$logo}>
+            <Image source={img1}></Image>
           </Pressable>
         </View>
       </View>
@@ -134,4 +127,3 @@ const $balanceAccount: TextStyle = {
 const $descriptionText: TextStyle = {
   fontSize: 15,
 }
-

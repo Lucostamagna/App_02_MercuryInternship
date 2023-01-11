@@ -1,38 +1,28 @@
-import React, {useState} from "react";
-import { account } from './AccountInterface';
-import { Dimensions, FlatList, View } from 'react-native';
-import AccountCard from "./AccountCard";
+import React from "react"
+import { account } from "./AccountInterface"
+import { FlatList } from "react-native"
+import AccountCard from "./AccountCard"
+import { SafeAreaView } from "react-native-safe-area-context"
 
-
-interface AccountProp{
-    accounts: account[]
+interface AccountProp {
+  accounts: account[]
 }
-interface Render{
-    item:account
+interface Render {
+  item: account
 }
 
-const { width } = Dimensions.get("screen")
-
-
-const AccountCarroousel = ({accounts}:AccountProp) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const renderItem = ({ item: account }:Render) => <AccountCard accountData={account} />
-    return (
-    <View>
-<FlatList
-showsHorizontalScrollIndicator={false}
-
-horizontal={true}
-data={accounts}
-renderItem={renderItem}
-
-
-
-
-/>
-    </View>
+const AccountCarroousel = ({ accounts }: AccountProp) => {
+  const renderItem = ({ item: account }: Render) => <AccountCard accountData={account} />
+  return (
+    <SafeAreaView>
+      <FlatList
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}
+        data={accounts}
+        renderItem={renderItem}
+      />
+    </SafeAreaView>
   )
 }
 
 export default AccountCarroousel
-

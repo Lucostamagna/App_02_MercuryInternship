@@ -11,23 +11,25 @@ import {
 import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
 import { account } from "./AccountInterface"
-import { Data } from "./AccountInterface"
 import img1 from "../images/dot.png"
 
-interface Prop {
+interface AccountProp {
   accountData: account
 }
 
 const { width } = Dimensions.get("screen")
 
-const AccountCard = ({ accountData }: Prop) => {
+const AccountCard = ({ accountData }: AccountProp) => {
   const theme = useColorScheme()
+
   return (
     <View style={{ ...$cardContainer, backgroundColor: colors[theme].cardBackground }}>
       <View style={$sectionContainer}>
         <View>
-          <Text style={{ ...$cardTitle, color: colors[theme].text }}> Current Account </Text>
-          <Text style={{ ...$cardId, color: colors[theme].description }}> hh</Text>
+          <Text style={{ ...$cardTitle, color: colors[theme].text }}>
+             Current Account 
+          </Text>
+          <Text style={{ ...$cardId, color: colors[theme].description }}> "1234-4567-3456-3456" </Text>
         </View>
         <View style={$logoContainer}>
           {/* Pressable doesn't add the opacity animation on press */}
@@ -45,7 +47,7 @@ const AccountCard = ({ accountData }: Prop) => {
         <Text style={{ ...$USAGBPcontainer, color: colors[theme].description }}>GBP</Text>
       </View>
       <View>
-        <Text style={{ ...$balanceAccount, color: colors[theme].text }}> 888888</Text>
+        <Text style={{ ...$balanceAccount, color: colors[theme].text }}> 76451.0</Text>
         <Text style={{ ...$descriptionText, color: colors[theme].text }}>Current Balance</Text>
       </View>
     </View>
@@ -53,14 +55,17 @@ const AccountCard = ({ accountData }: Prop) => {
 }
 
 export default AccountCard
+export const ACCOUNT_CARD_HORIZONTAL_MARGIN = 15
+export const ACCOUNT_CARD_HORIZONTAL_PADDING = 15
+export const NECCESARY_MAGIC_NUMBER = 60
+
 const $cardContainer: ViewStyle = {
   backgroundColor: "#FFFFFF",
-  paddingHorizontal: 15,
-  paddingTop: 10,
+  paddingHorizontal: ACCOUNT_CARD_HORIZONTAL_PADDING,
+  paddingTop: spacing.small,
   paddingBottom: spacing.tiny,
-  marginLeft: 15,
-  marginRight: 15,
-  width: width - 60,
+  marginHorizontal: ACCOUNT_CARD_HORIZONTAL_MARGIN,
+  width: width - NECCESARY_MAGIC_NUMBER,
   borderRadius: 25,
 }
 const $cardTitle: TextStyle = {
@@ -126,4 +131,5 @@ const $balanceAccount: TextStyle = {
 }
 const $descriptionText: TextStyle = {
   fontSize: 15,
+  
 }

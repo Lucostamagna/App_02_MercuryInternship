@@ -2,23 +2,27 @@ import React from "react"
 import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from "react-native"
 import { transaction } from "./AccountInterface"
 import { colors, spacing, typography } from "../../theme"
-import { Data } from "./AccountInterface"
-interface TProps {
+
+
+
+interface TransactionCardProps {
   transactionData: transaction
   Id: boolean
 }
-
-const TransactionCard = ({ transactionData, Id }: TProps) => {
+const colorCode = (n: number) => {
+  let color = ""
+  n > 0 ? (color = "#523CF8") : (color = "#F76654")
+  return color
+}
+const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
   const theme = useColorScheme()
-  const colorCode = (n: number) => {
-    let color = ""
-    n > 0 ? (color = "#523CF8") : (color = "#F76654")
-    return color
-  }
+
+
+  
   return (
     <View style={$CardContainer}>
       <View style={$cardIcon}>
-        {/* <Image source={transactionData.img}></Image> */}
+        <Image source={transactionData.img}></Image>
       </View>
 
       <View style={Id ? $conteinerId : { ...$conteinerText, borderColor: colors[theme].border }}>

@@ -4,7 +4,7 @@ import TransactionCard from './TransactionCard'
 import {colors, spacing, typography} from "../../theme"
 import { useColorScheme } from "react-native"
 import { transaction } from './AccountInterface';
- 
+ import Img7 from "../images/Path 41164.png"
 
 
 interface IProp {
@@ -28,14 +28,16 @@ const Transaction = ({transactions}: IProp ) => {
 <View style={$transactionsTitle}> 
 <Text style={{...$Title, color:colors[theme].text}}>  Recent transaction</Text>
 <Pressable style={$logoContainer}>
-
+<Image source={Img7}></Image>
 </Pressable>
 
 
 </View>
 <FlatList
+ keyExtractor={(Transaction) => Transaction.id}
 data={transactions}
 renderItem={renderItem}/>
+
     </View>
   )
 }

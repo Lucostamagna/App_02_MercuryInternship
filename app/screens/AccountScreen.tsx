@@ -11,6 +11,7 @@ import AccountCard from '../components/FinanceApp/AccountCard';
 import axios from 'axios';
 import MockAdapter from "axios-mock-adapter"
 import Transaction from '../components/FinanceApp/Transaction';
+import AccounMenu from '../components/FinanceApp/AccounMenu';
 
 
 const mock = new MockAdapter(axios)
@@ -109,7 +110,7 @@ useEffect(() => {
 
 <AccountCarroousel accounts={accounts}/>
 <Transaction transactions={transactions}/>
-
+<AccounMenu/>
         </SafeAreaView>
     </View>
   )

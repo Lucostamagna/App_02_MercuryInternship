@@ -1,8 +1,8 @@
 import React from "react"
-import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from 'react-native';
+import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from "react-native"
 import { transaction } from "./AccountInterface"
 import { colors, spacing, typography } from "../../theme"
-import { Data } from "./AccountInterface";
+import { Data } from "./AccountInterface"
 interface TProps {
   transactionData: transaction
   Id: boolean
@@ -10,7 +10,7 @@ interface TProps {
 
 const TransactionCard = ({ transactionData, Id }: TProps) => {
   const theme = useColorScheme()
-  const colorCode = (n:number) => {
+  const colorCode = (n: number) => {
     let color = ""
     n > 0 ? (color = "#523CF8") : (color = "#F76654")
     return color
@@ -18,7 +18,7 @@ const TransactionCard = ({ transactionData, Id }: TProps) => {
   return (
     <View style={$CardContainer}>
       <View style={$cardIcon}>
-      <Image source={transactionData.img}></Image>
+        {/* <Image source={transactionData.img}></Image> */}
       </View>
 
       <View style={Id ? $conteinerId : { ...$conteinerText, borderColor: colors[theme].border }}>
@@ -33,8 +33,9 @@ const TransactionCard = ({ transactionData, Id }: TProps) => {
         </Text>
       </View>
 
-      <View style={
-        Id ? $conteinerRightId : { ...$conteinerText, borderColor: colors[theme].border }}>
+      <View
+        style={Id ? $conteinerRightId : { ...$conteinerText, borderColor: colors[theme].border }}
+      >
         <Text
           style={{
             textAlign: "right",
@@ -48,9 +49,9 @@ const TransactionCard = ({ transactionData, Id }: TProps) => {
             ? `+${transactionData.amount.toFixed(2)}`
             : `${transactionData.amount.toFixed(2)}`}
         </Text>
-        <Text style={{...$TextRight, color:colors[theme].description}}>
-           {transactionData.coin}
-           </Text>
+        <Text style={{ ...$TextRight, color: colors[theme].description }}>
+          {transactionData.coin}
+        </Text>
       </View>
     </View>
   )
@@ -76,7 +77,7 @@ const $cardIcon: ViewStyle = {
 const $conteinerId: ViewStyle = {
   width: "62%",
 }
-const $conteinerRightId: ViewStyle ={
+const $conteinerRightId: ViewStyle = {
   width: "20%",
 }
 const $conteinerText: ViewStyle = {
@@ -96,9 +97,8 @@ const $transactionData: TextStyle = {
   lineHeight: 15,
   fontSize: 12,
   fontFamily: typography.primary.semiBold,
-  
 }
-const $TextRight: TextStyle={
+const $TextRight: TextStyle = {
   textAlign: "right",
   lineHeight: 15,
   fontSize: 12,

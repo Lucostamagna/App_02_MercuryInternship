@@ -10,31 +10,26 @@ import {
 } from "react-native"
 import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
-import { account } from "./AccountInterface"
-import img1 from "../images/dot.png"
-
-interface AccountProp {
-  accountData: account
-}
 
 const { width } = Dimensions.get("screen")
 
-const AccountCard = ({ accountData }: AccountProp) => {
+const AccountCard = () => {
   const theme = useColorScheme()
 
   return (
     <View style={{ ...$cardContainer, backgroundColor: colors[theme].cardBackground }}>
       <View style={$sectionContainer}>
         <View>
-          <Text style={{ ...$cardTitle, color: colors[theme].text }}>
-             Current Account 
+          <Text style={{ ...$cardTitle, color: colors[theme].text }}>Current Account</Text>
+          <Text style={{ ...$cardId, color: colors[theme].description }}>
+            {" "}
+            "1234-4567-3456-3456"{" "}
           </Text>
-          <Text style={{ ...$cardId, color: colors[theme].description }}> "1234-4567-3456-3456" </Text>
         </View>
         <View style={$logoContainer}>
           {/* Pressable doesn't add the opacity animation on press */}
           <Pressable style={$logo}>
-            <Image source={img1}></Image>
+            <Image resizeMode="cover" source={require("../images/dot.png")}></Image>
           </Pressable>
         </View>
       </View>
@@ -47,7 +42,7 @@ const AccountCard = ({ accountData }: AccountProp) => {
         <Text style={{ ...$USAGBPcontainer, color: colors[theme].description }}>GBP</Text>
       </View>
       <View>
-        <Text style={{ ...$balanceAccount, color: colors[theme].text }}> 76451.0</Text>
+        <Text style={{ ...$balanceAccount, color: colors[theme].text }}> 76451,0</Text>
         <Text style={{ ...$descriptionText, color: colors[theme].text }}>Current Balance</Text>
       </View>
     </View>
@@ -85,11 +80,13 @@ const $logo: ViewStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  
 }
 const $logoContainer: ViewStyle = {
   backgroundColor: colors.orangeBackground,
   width: 40,
   height: 40,
+  
   borderRadius: 20,
   display: "flex",
   justifyContent: "center",
@@ -128,8 +125,10 @@ const $balanceAccount: TextStyle = {
   fontFamily: typography.primary.bold,
   lineHeight: 41,
   fontSize: 34,
+
 }
 const $descriptionText: TextStyle = {
   fontSize: 15,
   
+ 
 }

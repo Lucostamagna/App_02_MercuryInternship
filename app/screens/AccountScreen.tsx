@@ -17,72 +17,10 @@ import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
 import Transaction from "../components/FinanceApp/Transaction"
 import AccounMenu from "../components/FinanceApp/AccounMenu"
-import Img2 from "../components/images/CardIcon.png"
-import Img3 from "../components/images/RestaurantIcon.png"
-import Img4 from "../components/images/TravelltIcon.png"
-import Img5 from "../components/images/ConstructionIcon.png"
-import Img6 from "../components/images/PersonIcon.png"
+import AccountCard from "../components/FinanceApp/AccountCard"
 
-const mock = new MockAdapter(axios)
 
-mock.onGet("/accounts").reply(200, {
-  accounts: [
-    {
-      id: "1234-4567-3456-3456",
-      currentBalance: 76451.0,
-    },
-    {
-      id: "1234-4567-3456-3456",
-      currentBalance: 76451.0,
-    },
-    ,
-  ],
-})
 
-mock.onGet("/transactions").reply(200, {
-  transactions: [
-    {
-      id: `"Golub" Taxi Transportation`,
-      title: `"Golub" Taxi Transportation`,
-      date: "20th May, 18:39",
-      amount: -345.0,
-      coin: "EUR",
-      img: Img2,
-    },
-    {
-      id: `"Francois" Restaurant Dinner`,
-      title: `"Francois" Restaurant Dinner`,
-      date: "15th May, 20:56",
-      amount: -1158.0,
-      coin: "EUR",
-      img: Img3,
-    },
-    {
-      id: `"AirMax" Travel to Paris`,
-      title: `"AirMax" Travel to Paris`,
-      date: "14th May, 16:00",
-      amount: -813.0,
-      coin: "EUR",
-      img: Img4,
-    },
-    {
-      id: `Construction ltd`,
-      title: `Construction ltd`,
-      date: "11th May, 09:26",
-      amount: 24500.0,
-      coin: "USD",
-      img: Img5,
-    },
-    {
-      id: `Robert Smith`,
-      title: `Robert Smith`,
-      date: "03rd May, 12:06",
-      amount: 11215.0,
-      coin: "USD",
-      img: Img6,
-    },
-  ],
-})
 const { width, height } = Dimensions.get("window")
 
 const AccountScreen = () => {
@@ -91,21 +29,6 @@ const AccountScreen = () => {
 
   const theme = useColorScheme()
 
-  useEffect(() => {
-    try {
-      ;(async () => {
-        const [responseAccounts, responseTransactions] = await Promise.all([
-          axios.get("/Accounts"),
-          axios.get("/Transactions"),
-        ])
-
-        setAccounts(responseAccounts.data.accounts)
-        setTransactions(responseTransactions.data.transactions)
-      })()
-    } catch (err) {
-      console.log(err)
-    }
-  }, [])
 
   return (
     <View style={$screenContainer}>
@@ -122,10 +45,10 @@ const AccountScreen = () => {
             </Pressable>
           </View>
         </View>
-
-        <AccountCarroousel accounts={accounts} />
-        <Transaction transactions={transactions} />
-        <AccounMenu />
+<AccountCard/>
+        {/* <AccountCarroousel accounts={accounts} /> */}
+        {/* <Transaction transactions={transactions} />
+        <AccounMenu /> */}
       </SafeAreaView>
     </View>
   )

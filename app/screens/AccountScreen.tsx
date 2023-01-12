@@ -19,9 +19,16 @@ import MockAdapter from "axios-mock-adapter"
 import Transaction from "../components/FinanceApp/Transaction"
 import AccounMenu from "../components/FinanceApp/AccounMenu"
 import AccountCard from "../components/FinanceApp/AccountCard"
+import img1 from "../components/images/CardIcon.png"
+import img2 from "../components/images/RestaurantIcon.png"
+import img3 from "../components/images/TravelltIcon.png"
+import img4 from "../components/images/ConstructionIcon.png"
+import img5 from "../components/images/PersonIcon.png"
+import img6 from "../components/images/Path 41196.png"
 
 import TransactionCard from "../components/FinanceApp/TransactionCard"
 import { account, transaction } from "../components/FinanceApp/AccountInterface"
+
 
 const mock = new MockAdapter(axios)
 
@@ -54,6 +61,7 @@ mock.onGet("/transactions").reply(200, {
       date: "20th May, 18:39",
       amount: -345.0,
       coin: "EUR",
+      img: img1
     },
     {
       id: `"Francois" Restaurant Dinner`,
@@ -61,6 +69,7 @@ mock.onGet("/transactions").reply(200, {
       date: "15th May, 20:56",
       amount: -1158.0,
       coin: "EUR",
+      img: img2
     },
     {
       id: `"AirMax" Travel to Paris`,
@@ -68,6 +77,7 @@ mock.onGet("/transactions").reply(200, {
       date: "14th May, 16:00",
       amount: -813.0,
       coin: "EUR",
+      img: img3
     },
     {
       id: `Construction ltd`,
@@ -75,6 +85,7 @@ mock.onGet("/transactions").reply(200, {
       date: "11th May, 09:26",
       amount: 24500.0,
       coin: "USD",
+      img: img4
     },
     {
       id: `Robert Smith`,
@@ -82,6 +93,7 @@ mock.onGet("/transactions").reply(200, {
       date: "03rd May, 12:06",
       amount: 11215.0,
       coin: "USD",
+      img: img5
     },
   ],
 })
@@ -112,10 +124,9 @@ const AccountScreen = () => {
           <View style={$sectionLeft}></View>
           <Text style={$titleSection}> Account History</Text>
           <View style={$sectionRight}>
-            <Pressable>
-              <Image
-                resizeMode="cover"
-                source={require("../components/images/Path 41164.png")}
+            <Pressable style={$logoContainer}>
+              <Image source={img6}
+                
               ></Image>
             </Pressable>
           </View>
@@ -163,6 +174,15 @@ const $titleSection: TextStyle = {
 
 const $sectionRight: ViewStyle = {
   marginRight: spacing.small,
+}
+const $logoContainer: ViewStyle = {
+  backgroundColor: colors.violetBackground,
+  width:30,
+  height: 30,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: 15,
 }
 
 // El propósito de SafeAreaViewes representar contenido dentro de los límites del área segura de un dispositivo. Actualmente solo es aplicable a dispositivos

@@ -24,7 +24,6 @@ import img2 from "../components/images/RestaurantIcon.png"
 import img3 from "../components/images/TravelltIcon.png"
 import img4 from "../components/images/ConstructionIcon.png"
 import img5 from "../components/images/PersonIcon.png"
-import img6 from "../components/images/Path 41196.png"
 
 import TransactionCard from "../components/FinanceApp/TransactionCard"
 import { account, transaction } from "../components/FinanceApp/AccountInterface"
@@ -125,9 +124,7 @@ const AccountScreen = () => {
           <Text style={$titleSection}> Account History</Text>
           <View style={$sectionRight}>
             <Pressable style={$logoContainer}>
-              <Image source={img6}
-                
-              ></Image>
+              
             </Pressable>
           </View>
         </View>

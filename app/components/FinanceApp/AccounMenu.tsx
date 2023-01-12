@@ -1,18 +1,22 @@
 import React from 'react'
-import { ViewStyle, Dimensions, Image, Pressable, useColorScheme, ImageStyle } from "react-native"
+import { ViewStyle, Dimensions, Image, Pressable, useColorScheme, ImageStyle, View } from 'react-native';
 import {colors} from "../../theme"
-import wallet from "../images/Path 40344.png"
-import card from "../images/Path 40350.png"
-import analtic from "../images/Path 40346.png"
-import payment from "../images/Path 40350.png"
+import img1 from "../images/wallet.png"
+import img2 from "../images/card.png"
+import img3 from "../images/transaction.png"
+import img4 from "../images/archive.png"
 
 const { width } = Dimensions.get("window")
 const AccounMenu = () => {
     const theme = useColorScheme()
   return (
+    
     <Pressable style={{ ...$menuContainer, backgroundColor: colors[theme].cardBackground }}>
-       <Image source={wallet} style={{...$menuIcon, tintColor:colors[theme].icon}}></Image>
-    </Pressable>
+    <Image source={img1} style={{ ...$menuIcon, tintColor: colors[theme].icon }}></Image>
+    <Image source={img2} style={{ ...$menuIcon, tintColor: colors[theme].icon }}></Image>
+    <Image source={img3}></Image>
+    <Image source={img4} style={{ ...$menuIcon, tintColor: colors[theme].icon }}></Image>
+  </Pressable> 
   )
 }
 

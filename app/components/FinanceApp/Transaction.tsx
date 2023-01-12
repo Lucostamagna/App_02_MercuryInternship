@@ -28,7 +28,7 @@ const Transaction = ({ transactions }: TransactionProp) => {
       <View style={$transactionsTitle}>
         <Text style={{ ...$Title, color: colors[theme].text }}> Recent transaction</Text>
         <Pressable style={$logoContainer}>
-          <Image resizeMode="cover" source={require("../images/Path 41164.png")}></Image>
+          
         </Pressable>
       </View>
       <FlatList

@@ -75,6 +75,7 @@ const $cardIcon: ViewStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  
 }
 const $conteinerId: ViewStyle = {
   width: "62%",

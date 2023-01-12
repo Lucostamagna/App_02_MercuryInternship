@@ -13,6 +13,7 @@ import { Text } from "../Text"
 import { account } from "./AccountInterface"
 
 
+
 interface AccountCardProps {
   accountData: account
 }
@@ -34,12 +35,15 @@ const AccountCard = ({accountData}:AccountCardProps) => {
           {/* Pressable doesn't add the opacity animation on press */}
           <Pressable style={$logo}>
             <Image resizeMode="cover" source={require("../images/dot.png")}></Image>
+            
           </Pressable>
         </View>
       </View>
       <View style={$currencyContainer}>
         <View style={$currencyContainer2}>
           <Text style={$EURcontainer}> EUR</Text>
+          
+          
         </View>
 
         <Text style={{ ...$USAGBPcontainer, color: colors[theme].description }}>USD</Text>

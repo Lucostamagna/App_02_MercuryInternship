@@ -4,7 +4,7 @@ import TransactionCard from "./TransactionCard"
 import { colors, spacing, typography } from "../../theme"
 import { useColorScheme } from "react-native"
 import { transaction } from './AccountInterface';
-
+import img6 from "../images/line.png"
 
 
 interface TransactionProp {
@@ -28,7 +28,7 @@ const Transaction = ({ transactions }: TransactionProp) => {
       <View style={$transactionsTitle}>
         <Text style={{ ...$Title, color: colors[theme].text }}> Recent transaction</Text>
         <Pressable style={$logoContainer}>
-          
+        <Image source={img6}></Image>
         </Pressable>
       </View>
       <FlatList

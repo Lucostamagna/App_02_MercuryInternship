@@ -14,7 +14,7 @@ import { spacing } from "../../theme"
 
 import active from "../images/active.png"
 
-import inactive from "../images/inactive 1.png"
+import inactive from "../images/inactive.png"
 
 interface AccountProp {
   accounts: account[]

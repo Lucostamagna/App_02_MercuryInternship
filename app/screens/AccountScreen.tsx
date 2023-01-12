@@ -27,6 +27,7 @@ import img5 from "../components/images/PersonIcon.png"
 
 import TransactionCard from "../components/FinanceApp/TransactionCard"
 import { account, transaction } from "../components/FinanceApp/AccountInterface"
+import img7 from "../components/images/setting.png"
 
 
 const mock = new MockAdapter(axios)
@@ -124,7 +125,7 @@ const AccountScreen = () => {
           <Text style={$titleSection}> Account History</Text>
           <View style={$sectionRight}>
             <Pressable style={$logoContainer}>
-              
+              <Image source={img7}></Image>
             </Pressable>
           </View>
         </View>

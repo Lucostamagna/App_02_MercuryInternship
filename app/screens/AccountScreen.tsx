@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-native"
 import AccountCarroousel from "../components/FinanceApp/AccountCarroousel"
+
 import { colors, spacing, typography } from "../theme"
 import { SafeAreaView } from "react-native-safe-area-context"
 import axios from "axios"
@@ -102,18 +103,17 @@ const AccountScreen = () => {
   useEffect(() => {
     try {
       ;(async () => {
-        const [responseaccounts, responsetransactions] = await Promise.all([
-          axios.get("/accounts"),
-          axios.get("/transactions"),
-        ])
-        setAccounts(responseaccounts.data.Accounts)
-        setTransactions(responsetransactions.data.Transactions)
+        const responseAccounts = await axios.get("/accounts")
+        const responseTransactions = await axios.get("/transactions")
+        setAccounts(responseAccounts.data.accounts)
+        setTransactions(responseTransactions.data.transactions)
       })()
     } catch (error) {
       console.log(error)
     }
-  }, []
-  )
+  }, [])
+  
+
   return (
     <View style={$screenContainer}>
       <SafeAreaView style={{ ...$container, backgroundColor: colors[theme].background }}>

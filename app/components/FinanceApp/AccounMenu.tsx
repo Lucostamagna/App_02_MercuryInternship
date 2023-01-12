@@ -1,16 +1,17 @@
 import React from 'react'
 import { ViewStyle, Dimensions, Image, Pressable, useColorScheme, ImageStyle } from "react-native"
 import {colors} from "../../theme"
+import wallet from "../images/Path 40344.png"
+import card from "../images/Path 40350.png"
+import analtic from "../images/Path 40346.png"
+import payment from "../images/Path 40350.png"
 
 const { width } = Dimensions.get("window")
 const AccounMenu = () => {
     const theme = useColorScheme()
   return (
     <Pressable style={{ ...$menuContainer, backgroundColor: colors[theme].cardBackground }}>
-      <Image resizeMode='cover' source={require("../images/Path 40350.png")} style={{ ...$menuIcon, tintColor: colors[theme].icon }}></Image>
-      <Image resizeMode='cover' source={require("../images/Path 40344.png")} style={{ ...$menuIcon, tintColor: colors[theme].icon }}></Image>
-      <Image resizeMode='cover' source={require("../images/Path 40346.png")}></Image>
-      <Image  resizeMode='cover' source={require("../images/Path 40344.png")} style={{ ...$menuIcon, tintColor: colors[theme].icon }}></Image>
+       <Image source={wallet} style={{...$menuIcon, tintColor:colors[theme].icon}}></Image>
     </Pressable>
   )
 }
@@ -28,4 +29,5 @@ const $menuContainer: ViewStyle = {
   }
   const $menuIcon: ImageStyle = {
      tintColor: colors.menuIcons 
+
     }

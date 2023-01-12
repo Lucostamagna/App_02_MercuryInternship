@@ -10,10 +10,15 @@ import {
 } from "react-native"
 import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
+import { account } from "./AccountInterface"
 
+
+interface AccountCardProps {
+  accountData: account
+}
 const { width } = Dimensions.get("screen")
 
-const AccountCard = () => {
+const AccountCard = ({accountData}:AccountCardProps) => {
   const theme = useColorScheme()
 
   return (
@@ -22,8 +27,7 @@ const AccountCard = () => {
         <View>
           <Text style={{ ...$cardTitle, color: colors[theme].text }}>Current Account</Text>
           <Text style={{ ...$cardId, color: colors[theme].description }}>
-            {" "}
-            "1234-4567-3456-3456"{" "}
+            {accountData.id}
           </Text>
         </View>
         <View style={$logoContainer}>
@@ -42,7 +46,7 @@ const AccountCard = () => {
         <Text style={{ ...$USAGBPcontainer, color: colors[theme].description }}>GBP</Text>
       </View>
       <View>
-        <Text style={{ ...$balanceAccount, color: colors[theme].text }}> 76451,0</Text>
+        <Text style={{ ...$balanceAccount, color: colors[theme].text }}> {accountData.currentBalance}</Text>
         <Text style={{ ...$descriptionText, color: colors[theme].text }}>Current Balance</Text>
       </View>
     </View>

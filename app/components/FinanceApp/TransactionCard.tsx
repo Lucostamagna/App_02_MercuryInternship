@@ -3,22 +3,20 @@ import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from "react-n
 import { transaction } from "./AccountInterface"
 import { colors, spacing, typography } from "../../theme"
 
-
-
 interface TransactionCardProps {
   transactionData: transaction
   Id: boolean
 }
+
 const colorCode = (n: number) => {
   let color = ""
   n > 0 ? (color = "#523CF8") : (color = "#F76654")
   return color
 }
+
 const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
   const theme = useColorScheme()
 
-
-  
   return (
     <View style={$CardContainer}>
       <View style={$cardIcon}>

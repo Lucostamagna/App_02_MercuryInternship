@@ -1,25 +1,48 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import { account } from "./AccountInterface"
-import { FlatList, Dimensions, View, Image, ViewStyle } from 'react-native';
+import {
+  FlatList,
+  Dimensions,
+  ViewStyle,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  View,
+  Image,
+} from "react-native"
 import AccountCard from "./AccountCard"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { spacing } from "../../theme"
+
+import active from "../images/active.png"
+
+import inactive from "../images/inactive 1.png"
 
 interface AccountProp {
   accounts: account[]
 }
-interface Render {
+interface AccountRender {
   item: account
 }
 
 const { width } = Dimensions.get("screen")
 const AccountCarroousel = ({ accounts }: AccountProp) => {
-  
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const renderItem = ({ item: account }: Render) => <AccountCard accountData={account} />
+  const onMomentumScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const index = Math.ceil(event.nativeEvent.contentOffset.x / (width - 30))
+    setCurrentIndex(index)
+  }
+
+  const renderItem = ({ item: account }: AccountRender) => <AccountCard accountData={account} />
+
   return (
-
-    <SafeAreaView>
-    
+    <View style={$container}>
+      <View style={$dotsContainer}>
+        <View style={$dots}>
+          {accounts.map((acc, index) => {
+            return <Image source={index === currentIndex ? active : inactive} key={index}></Image>
+          })}
+        </View>
+      </View>
       <FlatList
         showsHorizontalScrollIndicator={false}
         snapToInterval={width - 30}
@@ -27,13 +50,18 @@ const AccountCarroousel = ({ accounts }: AccountProp) => {
         horizontal={true}
         data={accounts}
         renderItem={renderItem}
+        onMomentumScrollEnd={onMomentumScrollEnd}
+        keyExtractor={(account) => account.id}
       />
-    </SafeAreaView>
+    </View>
   )
 }
 
 export default AccountCarroousel
 
+const $container: ViewStyle = {
+  marginBottom: spacing.medium,
+}
 const $dotsContainer: ViewStyle = {
   display: "flex",
   justifyContent: "center",
@@ -46,5 +74,5 @@ const $dots: ViewStyle = {
   justifyContent: "space-between",
   alignItems: "center",
   width: "12%",
-  
+  paddingBottom: spacing.extraSmall,
 }

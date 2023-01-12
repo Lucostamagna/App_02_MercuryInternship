@@ -10,22 +10,17 @@ import {
   Image,
 } from "react-native"
 import AccountCarroousel from "../components/FinanceApp/AccountCarroousel"
-
 import { colors, spacing, typography } from "../theme"
 import { SafeAreaView } from "react-native-safe-area-context"
-
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
 import Transaction from "../components/FinanceApp/Transaction"
 import AccounMenu from "../components/FinanceApp/AccounMenu"
-import AccountCard from "../components/FinanceApp/AccountCard"
 import img1 from "../components/images/CardIcon.png"
 import img2 from "../components/images/RestaurantIcon.png"
 import img3 from "../components/images/TravelltIcon.png"
 import img4 from "../components/images/ConstructionIcon.png"
 import img5 from "../components/images/PersonIcon.png"
-
-import TransactionCard from "../components/FinanceApp/TransactionCard"
 import { account, transaction } from "../components/FinanceApp/AccountInterface"
 import img7 from "../components/images/setting.png"
 
@@ -107,16 +102,18 @@ const AccountScreen = () => {
   useEffect(() => {
     try {
       ;(async () => {
-        const responseAccounts = await axios.get("/accounts")
-        const responseTransactions = await axios.get("/transactions")
-        setAccounts(responseAccounts.data.accounts)
-        setTransactions(responseTransactions.data.transactions)
+        const [responseaccounts, responsetransactions] = await Promise.all([
+          axios.get("/accounts"),
+          axios.get("/transactions"),
+        ])
+        setAccounts(responseaccounts.data.Accounts)
+        setTransactions(responsetransactions.data.Transactions)
       })()
     } catch (error) {
       console.log(error)
     }
-  }, [])
-
+  }, []
+  )
   return (
     <View style={$screenContainer}>
       <SafeAreaView style={{ ...$container, backgroundColor: colors[theme].background }}>

@@ -15,19 +15,24 @@ import { observer } from "mobx-react-lite"
 import React from "react"
 import { useColorScheme } from "react-native"
 import Config from "../config"
-import AccountMenu from "../components/FinanceApp/AccountMenu"
-
+import {WelcomeScreen} from "../screens/WelcomeScreen"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
-
+import { ErrorBoundary } from '../screens/ErrorScreen/ErrorBoundary';
+import AccountScreen from '../screens/AccountScreen';
+import axios from "axios"
+import MockAdapter from "axios-mock-adapter"
+import TransactionCard from "../components/FinanceApp/TransactionCard"
+import SettingsScreen from '../screens/SettingsScreen';
+import AllTransactionScreen from '../screens/AllTransactionScreen';
 
 
    
 
 
 export type AppStackParamList = {
- Profile: undefined,
- Settings: undefined,
- AllTransaction:undefined
+  Account: undefined
+  SettingsScreen:undefined
+  AllTransactionsScreen:undefined
 }
 
 /**
@@ -49,9 +54,9 @@ const AppStack = observer(function AppStack() {
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
     >
-          <Stack.Screen name="Profile" component={AccountMenu} />
-        
-                                                  
+          <Stack.Screen name="Account" component={AccountScreen} />
+          <Stack.Screen name="SettingsScreen" component={SettingsScreen}/>
+          <Stack.Screen name="AllTransactionsScreen" component={AllTransactionScreen}/>                                     
     </Stack.Navigator>
   )
 })

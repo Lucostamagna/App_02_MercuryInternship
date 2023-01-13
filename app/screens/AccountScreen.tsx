@@ -10,11 +10,13 @@ import {
   Image,
 } from "react-native"
 import AccountCarroousel from "../components/FinanceApp/AccountCarroousel"
-
+import SettingsScreen from "./SettingsScreen"
 import { colors, spacing, typography } from "../theme"
 import { SafeAreaView } from "react-native-safe-area-context"
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
+import { navigate } from "../navigators"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 import Transaction from "../components/FinanceApp/Transaction"
 import AccountMenu from "../components/FinanceApp/AccountMenu"
 import img1 from "../components/images/CardIcon.png"
@@ -99,6 +101,7 @@ const AccountScreen = () => {
   const [transactions, setTransactions] = useState<transaction[]>([])
 
   const theme = useColorScheme()
+  const {bottom} = useSafeAreaInsets();
 
   useEffect(() => {
     try {
@@ -121,7 +124,7 @@ const AccountScreen = () => {
           <View style={$sectionLeft}></View>
           <Text style={$titleSection}> Account History</Text>
           <View style={$sectionRight}>
-            <Pressable style={$logoContainer}>
+            <Pressable onPress={()=> navigate("SettingsScreen")} style={$logoContainer}>
               <Image source={img7}></Image>
             </Pressable>
           </View>

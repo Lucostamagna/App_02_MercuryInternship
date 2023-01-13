@@ -171,7 +171,7 @@ const $sectionRight: ViewStyle = {
   marginRight: spacing.small,
 }
 const $logoContainer: ViewStyle = {
-  backgroundColor: colors.violetBackground,
+  backgroundColor: 'transparent',
   width:30,
   height: 30,
   display: "flex",

@@ -45,8 +45,8 @@ const $transactionsContainer: ViewStyle = {
   marginRight: "auto",
   borderRadius: 30,
   paddingHorizontal: spacing.large,
-  paddingTop: spacing.medium,
-  paddingBottom: spacing.medium,
+  paddingTop: spacing.large,
+  paddingBottom: "30%",
 }
 
 const $transactionsTitle: ViewStyle = {

@@ -177,7 +177,7 @@ const $logoContainer: ViewStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  borderRadius: 15,
+  
 }
 
 // El propósito de SafeAreaViewes representar contenido dentro de los límites del área segura de un dispositivo. Actualmente solo es aplicable a dispositivos

@@ -2,7 +2,7 @@ import React from "react"
 import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from "react-native"
 import { transaction } from "./AccountInterface"
 import { colors, spacing, typography } from "../../theme"
-import { ACCOUNT_CARD_HORIZONTAL_MARGIN } from './AccountCard';
+import { ACCOUNT_CARD_HORIZONTAL_MARGIN } from "./AccountCard"
 
 interface TransactionCardProps {
   transactionData: transaction
@@ -33,17 +33,10 @@ const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
         <Text style={{ ...$transactionData, color: colors[theme].description }}>
           {" "}
           {transactionData.date}
-         
-          
-        
-       
-          
         </Text>
       </View>
 
-      <View
-        // style={Id ? $conteinerRightId : { ...$conteinerText, borderColor: colors[theme].border }}
-      >
+      <View style={$conteinerRightId}>
         <Text
           style={{
             textAlign: "right",
@@ -51,19 +44,15 @@ const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
             fontSize: 12,
             fontFamily: typography.primary.semiBold,
             color: colorCode(transactionData.amount),
-            
-           
           }}
         >
-
           {transactionData.amount > 0
             ? `+${transactionData.amount.toFixed(2)}`
-            : `${transactionData.amount.toFixed(2)}`}  
+            : `${transactionData.amount.toFixed(2)}`}
         </Text>
         <Text style={{ ...$TextRight, color: colors[theme].description }}>
           {transactionData.coin}
         </Text>
-        
       </View>
     </View>
   )
@@ -75,6 +64,7 @@ const $CardContainer: ViewStyle = {
   display: "flex",
   flexDirection: "row",
   marginBottom: spacing.tiny,
+  padding: 4.5,
 }
 const $cardIcon: ViewStyle = {
   marginRight: spacing.medium,
@@ -85,16 +75,15 @@ const $cardIcon: ViewStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  
 }
 const $conteinerId: ViewStyle = {
-  width: "62%",
+  width: "65%",
 }
 const $conteinerRightId: ViewStyle = {
-  width: "20%",
+  width: "22%",
 }
 const $conteinerText: ViewStyle = {
-  width: "62%",
+  width: "65%",
   borderBottomWidth: 1,
   borderColor: "#DCDCDC",
   paddingBottom: 13,

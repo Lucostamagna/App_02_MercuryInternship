@@ -12,14 +12,12 @@ import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
 import { account } from "./AccountInterface"
 
-
-
 interface AccountCardProps {
   accountData: account
 }
 const { width } = Dimensions.get("screen")
 
-const AccountCard = ({accountData}:AccountCardProps) => {
+const AccountCard = ({ accountData }: AccountCardProps) => {
   const theme = useColorScheme()
 
   return (
@@ -27,30 +25,28 @@ const AccountCard = ({accountData}:AccountCardProps) => {
       <View style={$sectionContainer}>
         <View>
           <Text style={{ ...$cardTitle, color: colors[theme].text }}>Current Account</Text>
-          <Text style={{ ...$cardId, color: colors[theme].description }}>
-            {accountData.id}
-          </Text>
+          <Text style={{ ...$cardId, color: colors[theme].description }}>{accountData.id}</Text>
         </View>
         <View style={$logoContainer}>
           {/* Pressable doesn't add the opacity animation on press */}
           <Pressable style={$logo}>
             <Image resizeMode="cover" source={require("../images/dot.png")}></Image>
-            
           </Pressable>
         </View>
       </View>
       <View style={$currencyContainer}>
         <View style={$currencyContainer2}>
           <Text style={$EURcontainer}> EUR</Text>
-          
-          
         </View>
 
         <Text style={{ ...$USAGBPcontainer, color: colors[theme].description }}>USD</Text>
         <Text style={{ ...$USAGBPcontainer, color: colors[theme].description }}>GBP</Text>
       </View>
       <View>
-        <Text style={{ ...$balanceAccount, color: colors[theme].text }}> {accountData.currentBalance}</Text>
+        <Text style={{ ...$balanceAccount, color: colors[theme].text }}>
+          {" "}
+          {accountData.currentBalance}
+        </Text>
         <Text style={{ ...$descriptionText, color: colors[theme].text }}>Current Balance</Text>
       </View>
     </View>
@@ -75,11 +71,13 @@ const $cardTitle: TextStyle = {
   fontFamily: typography.primary.bold,
   fontSize: 22,
   marginBottom: spacing.tiny,
+  marginTop: -4,
 }
 const $cardId: TextStyle = {
   fontFamily: typography.primary.semiBold,
   fontSize: 12,
-  marginBottom: spacing.tiny,
+
+  marginBottom: 10,
 }
 const $logo: ViewStyle = {
   width: 40,
@@ -88,13 +86,12 @@ const $logo: ViewStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  
 }
 const $logoContainer: ViewStyle = {
   backgroundColor: colors.orangeBackground,
   width: 40,
   height: 40,
-  
+
   borderRadius: 20,
   display: "flex",
   justifyContent: "center",
@@ -133,10 +130,8 @@ const $balanceAccount: TextStyle = {
   fontFamily: typography.primary.bold,
   lineHeight: 41,
   fontSize: 34,
-
+  paddingTop: 25,
 }
 const $descriptionText: TextStyle = {
   fontSize: 15,
-  
- 
 }

@@ -3,9 +3,8 @@ import { View, ViewStyle, FlatList, Image, TextStyle, Pressable, Text } from "re
 import TransactionCard from "./TransactionCard"
 import { colors, spacing, typography } from "../../theme"
 import { useColorScheme } from "react-native"
-import { transaction } from './AccountInterface';
+import { transaction } from "./AccountInterface"
 import img6 from "../images/line.png"
-
 
 interface TransactionProp {
   transactions: transaction[]
@@ -28,7 +27,7 @@ const Transaction = ({ transactions }: TransactionProp) => {
       <View style={$transactionsTitle}>
         <Text style={{ ...$Title, color: colors[theme].text }}> Recent transaction</Text>
         <Pressable style={$logoContainer}>
-        <Image source={img6}></Image>
+          <Image source={img6}></Image>
         </Pressable>
       </View>
       <FlatList
@@ -51,7 +50,7 @@ const $transactionsContainer: ViewStyle = {
 }
 
 const $transactionsTitle: ViewStyle = {
-  paddingBottom: spacing.extraSmall,
+  paddingBottom: spacing.large,
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",

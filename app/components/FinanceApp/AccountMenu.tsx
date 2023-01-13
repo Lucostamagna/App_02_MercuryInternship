@@ -7,7 +7,7 @@ import img3 from "../images/transaction.png"
 import img4 from "../images/archive.png"
 
 const { width } = Dimensions.get("window")
-const AccounMenu = () => {
+const AccountMenu = () => {
     const theme = useColorScheme()
   return (
     
@@ -20,7 +20,7 @@ const AccounMenu = () => {
   )
 }
 
-export default AccounMenu
+export default AccountMenu
 const $menuContainer: ViewStyle = {
     display: "flex",
     flexDirection: "row",

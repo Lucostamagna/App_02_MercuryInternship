@@ -16,7 +16,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
 import Transaction from "../components/FinanceApp/Transaction"
-import AccounMenu from "../components/FinanceApp/AccounMenu"
+import AccountMenu from "../components/FinanceApp/AccountMenu"
 import img1 from "../components/images/CardIcon.png"
 import img2 from "../components/images/RestaurantIcon.png"
 import img3 from "../components/images/TravelltIcon.png"
@@ -130,7 +130,7 @@ const AccountScreen = () => {
         <AccountCarroousel accounts={accounts} />
       
         <Transaction transactions={transactions} />
-        <AccounMenu />
+        <AccountMenu />
       </SafeAreaView>
     </View>
   )

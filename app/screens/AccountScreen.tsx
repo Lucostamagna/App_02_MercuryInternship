@@ -18,7 +18,7 @@ import MockAdapter from "axios-mock-adapter"
 import { navigate } from "../navigators"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import Transaction from "../components/FinanceApp/Transaction"
-import AccountMenu from "../components/FinanceApp/AccountMenu"
+
 import img1 from "../components/images/CardIcon.png"
 import img2 from "../components/images/RestaurantIcon.png"
 import img3 from "../components/images/TravelltIcon.png"
@@ -133,7 +133,7 @@ const AccountScreen = () => {
         <AccountCarroousel accounts={accounts} />
       
         <Transaction transactions={transactions} />
-        <AccountMenu />
+        
       </SafeAreaView>
     </View>
   )
@@ -144,6 +144,7 @@ const $screenContainer: ViewStyle = {
   backgroundColor: colors.violetBackground,
   minHeight: height,
   width,
+     
 }
 
 const $container: ViewStyle = {
@@ -152,6 +153,8 @@ const $container: ViewStyle = {
   justifyContent: "space-between",
   width,
   height,
+ 
+  
 }
 const $title: ViewStyle = {
   display: "flex",

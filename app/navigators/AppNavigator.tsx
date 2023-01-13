@@ -24,14 +24,16 @@ import MockAdapter from "axios-mock-adapter"
 import TransactionCard from "../components/FinanceApp/TransactionCard"
 import SettingsScreen from '../screens/SettingsScreen';
 import AllTransactionScreen from '../screens/AllTransactionScreen';
+import AccountMenu from '../components/FinanceApp/AccountMenu';
 
 
    
 
 
 export type AppStackParamList = {
-  Account: undefined
-  SettingsScreen:undefined
+  // Account: undefined
+  Welcome:undefined,
+  SettingsScreen:undefined,
   AllTransactionsScreen:undefined
 }
 
@@ -54,7 +56,7 @@ const AppStack = observer(function AppStack() {
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
     >
-          <Stack.Screen name="Account" component={AccountScreen} />
+          <Stack.Screen name="Welcome" component={AccountMenu} />
           <Stack.Screen name="SettingsScreen" component={SettingsScreen}/>
           <Stack.Screen name="AllTransactionsScreen" component={AllTransactionScreen}/>                                     
     </Stack.Navigator>

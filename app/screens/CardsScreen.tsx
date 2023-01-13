@@ -1,10 +1,11 @@
 import React from 'react'
+import { View } from 'react-native';
 
 const CardsScreen = () => {
   return (
-    <div>
+    <View>
       
-    </div>
+    </View>
   )
 }
 

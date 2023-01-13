@@ -11,9 +11,7 @@ import {
 } from "react-native"
 import AccountCard from "./AccountCard"
 import { spacing } from "../../theme"
-
 import active from "../images/active.png"
-
 import inactive from "../images/inactive.png"
 
 interface AccountProp {
@@ -73,6 +71,6 @@ const $dots: ViewStyle = {
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  width: "12%",
-  paddingBottom: spacing.extraSmall,
+  width: "15%",
+  paddingBottom: spacing.large,
 }

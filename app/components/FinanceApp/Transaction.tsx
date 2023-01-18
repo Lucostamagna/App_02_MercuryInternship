@@ -22,6 +22,7 @@ const Transaction = ({ transactions }: TransactionProp) => {
       Id={transactions[transactions.length - 1].id === transaction.id}
     />
   )
+  
   return (
     <View style={{ ...$transactionsContainer, backgroundColor: colors[theme].cardBackground }}>
       <View style={$transactionsTitle}>

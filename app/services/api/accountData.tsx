@@ -1,7 +1,6 @@
 
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
-
 import img1 from "../../components/images/CardIcon.png"
 import img2 from "../../components/images/RestaurantIcon.png"
 import img3 from "../../components/images/TravelltIcon.png"
@@ -38,7 +37,7 @@ mock.onGet("/transactions").reply(200, {
       date: "20th May, 18:39",
       amount: -345.0,
       coin: "EUR",
-      img: img1
+      img: img1,
     },
     {
       id: `"Francois" Restaurant Dinner`,
@@ -46,7 +45,7 @@ mock.onGet("/transactions").reply(200, {
       date: "15th May, 20:56",
       amount: -1158.0,
       coin: "EUR",
-      img: img2
+      img: img2,
     },
     {
       id: `"AirMax" Travel to Paris`,
@@ -54,7 +53,7 @@ mock.onGet("/transactions").reply(200, {
       date: "14th May, 16:00",
       amount: -813.0,
       coin: "EUR",
-      img: img3
+      img: img3,
     },
     {
       id: `Construction ltd`,
@@ -62,7 +61,7 @@ mock.onGet("/transactions").reply(200, {
       date: "11th May, 09:26",
       amount: 24500.0,
       coin: "USD",
-      img: img4
+      img: img4,
     },
     {
       id: `Robert Smith`,
@@ -70,7 +69,7 @@ mock.onGet("/transactions").reply(200, {
       date: "03rd May, 12:06",
       amount: 11215.0,
       coin: "USD",
-      img: img5
+      img: img5,
     },
   ],
 })

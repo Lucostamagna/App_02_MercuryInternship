@@ -17,7 +17,7 @@ import { useColorScheme } from "react-native"
 import Config from "../config"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import SettingsScreen from '../screens/SettingsScreen';
-import AllTransactionScreen from '../screens/AllTransactionScreen';
+import AllTransactionsScreen from '../screens/AllTransactionsScreen';
 import AccountMenu from '../components/FinanceApp/AccountMenu';
 
 export type AppStackParamList = {
@@ -48,7 +48,7 @@ const AppStack = observer(function AppStack() {
     >
           <Stack.Screen name="Welcome" component={AccountMenu} />
           <Stack.Screen name="SettingsScreen" component={SettingsScreen}/>
-          <Stack.Screen name="AllTransactionsScreen" component={AllTransactionScreen}/>                                     
+          <Stack.Screen name="AllTransactionsScreen" component={AllTransactionsScreen}/>                                     
     </Stack.Navigator>
   )
 })

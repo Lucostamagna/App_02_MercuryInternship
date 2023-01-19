@@ -19,6 +19,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context"
 import AccountCarroousel from "../components/FinanceApp/AccountCarroousel"
 import Transaction from "../components/FinanceApp/Transaction"
 import img7 from "../components/images/setting.png"
+import { ScrollView } from "react-native-gesture-handler"
+import { Button } from '../components/Button';
 
 
 const AccountScreen = () => {
@@ -44,6 +46,7 @@ const AccountScreen = () => {
   return (
     <View style={$screenContainer}>
       <SafeAreaView style={{ ...$container, backgroundColor: colors[theme].background }}>
+        <ScrollView style={$ScrollView}>
         <View style={$title}>
           <View style={$sectionLeft}></View>
           <Text style={$titleSection}> Account History</Text>
@@ -57,12 +60,18 @@ const AccountScreen = () => {
         <AccountCarroousel accounts={accounts} />
 
         <Transaction transactions={transactions} />
+       
+        </ScrollView>
       </SafeAreaView>
     </View>
   )
 }
 const { width, height } = Dimensions.get("window")
 
+
+const $ScrollView: ViewStyle = {
+  flex:1
+}
 const $screenContainer: ViewStyle = {
   backgroundColor: colors.violetBackground,
   minHeight: height,

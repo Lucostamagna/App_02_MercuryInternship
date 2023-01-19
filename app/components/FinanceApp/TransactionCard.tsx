@@ -3,13 +3,16 @@ import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from "react-n
 import { transaction } from "./AccountInterface"
 import { colors, spacing, typography } from "../../theme"
 import { ACCOUNT_CARD_HORIZONTAL_MARGIN } from "./AccountCard"
+import { ScrollView } from "react-native-gesture-handler"
+import { SafeAreaView } from "react-native-safe-area-context"
+import { Button } from "../Button"
 
 interface TransactionCardProps {
   transactionData: transaction
   Id: boolean
 }
 
-const colorCode = (n: number) => {
+const colorAccount = (n: number) => {
   let color = ""
   n > 0 ? (color = "#523CF8") : (color = "#F76654")
   return color
@@ -19,6 +22,7 @@ const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
   const theme = useColorScheme()
 
   return (
+   
     <View style={$CardContainer}>
       <View style={$cardIcon}>
         <Image source={transactionData.img}></Image>
@@ -43,7 +47,7 @@ const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
             lineHeight: 15,
             fontSize: 12,
             fontFamily: typography.primary.semiBold,
-            color: colorCode(transactionData.amount),
+            color: colorAccount(transactionData.amount),
           }}
         >
           {transactionData.amount > 0
@@ -54,12 +58,19 @@ const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
           {transactionData.coin}
         </Text>
       </View>
+     
     </View>
+    
+   
+    
   )
 }
 
 export default TransactionCard
 
+const $ScrollView:ViewStyle = {
+  flex: 1,
+}
 const $CardContainer: ViewStyle = {
   display: "flex",
   flexDirection: "row",
@@ -85,8 +96,9 @@ const $conteinerRightId: ViewStyle = {
 const $conteinerText: ViewStyle = {
   width: "65%",
   borderBottomWidth: 1,
+  
   borderColor: "#DCDCDC",
-  paddingBottom: 13,
+  paddingBottom: 15,
 }
 const $transactionTitle: TextStyle = {
   textAlign: "left",

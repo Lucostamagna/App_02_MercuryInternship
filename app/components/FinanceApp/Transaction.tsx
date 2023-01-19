@@ -5,6 +5,7 @@ import { colors, spacing, typography } from "../../theme"
 import { useColorScheme } from "react-native"
 import { transaction } from "./AccountInterface"
 import img6 from "../images/line.png"
+import { ScrollView } from "react-native-gesture-handler"
 
 interface TransactionProp {
   transactions: transaction[]
@@ -24,6 +25,7 @@ const Transaction = ({ transactions }: TransactionProp) => {
   )
   
   return (
+    <View>
     <View style={{ ...$transactionsContainer, backgroundColor: colors[theme].cardBackground }}>
       <View style={$transactionsTitle}>
         <Text style={{ ...$Title, color: colors[theme].text }}> Recent transaction</Text>
@@ -35,19 +37,46 @@ const Transaction = ({ transactions }: TransactionProp) => {
         keyExtractor={(Transaction) => Transaction.id}
         data={transactions}
         renderItem={renderItem}
+        
       />
+      <Pressable style={$PressableBotton}>
+        <Text style={{ ...$ButtonText, color: colors[theme].text }}> All Transactions</Text>
+      </Pressable>
     </View>
+    </View>
+    
   )
 }
+
+
+const $PressableBotton:  ViewStyle = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "#F76654",
+  width: '50%',
+  height:'8%',
+  alignSelf: "center",
+  borderRadius: 5,
+  marginTop: 50,
+}
+
+const $ButtonText: TextStyle = {
+  fontSize: 14,
+  fontFamily: typography.primary.semiBold,
+}
+
 const $transactionsContainer: ViewStyle = {
   backgroundColor: colors.whiteBackground,
   width: "93%",
+  
   marginLeft: "auto",
   marginRight: "auto",
   borderRadius: 30,
   paddingHorizontal: spacing.large,
   paddingTop: spacing.large,
   paddingBottom: "30%",
+ 
 }
 
 const $transactionsTitle: ViewStyle = {

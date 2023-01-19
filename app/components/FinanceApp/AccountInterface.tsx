@@ -1,7 +1,7 @@
 
 export interface account {
   id: string
-  currentBalance: number
+  currentBalance: number | string
 }
 
 export interface transaction {

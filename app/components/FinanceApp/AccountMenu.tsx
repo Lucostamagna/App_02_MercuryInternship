@@ -45,6 +45,7 @@ const AccountMenu = () => {
             position:"absolute", 
             borderTopLeftRadius:30,
             borderTopRightRadius:30,
+           
             
           },
         ],

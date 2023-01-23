@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import { account } from "./AccountInterface"
 import {
   FlatList,
@@ -14,24 +14,29 @@ import { spacing } from "../../theme"
 import active from "../images/active.png"
 import inactive from "../images/inactive.png"
 
+
 interface AccountProp {
   accounts: account[]
+  onChangeCurrentAccount?:(n: number) => void
 }
 interface AccountRender {
   item: account
 }
 
 const { width } = Dimensions.get("screen")
-const AccountCarroousel = ({ accounts }: AccountProp) => {
+
+const AccountCarroousel = ({ accounts, onChangeCurrentAccount  }: AccountProp) => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const onMomentumScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const onMomentumScrollEnd = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const index = Math.ceil(event.nativeEvent.contentOffset.x / (width - 30))
     setCurrentIndex(index)
-  }
+    onChangeCurrentAccount(index)
+  }, [width, onChangeCurrentAccount])
 
   const renderItem = ({ item: account }: AccountRender) => <AccountCard accountData={account} />
-
+  
+  // const viewConfigRef = React.useRef({ itemVisiblePercentThreshold: 50 })
   return (
     <View style={$container}>
       <View style={$dotsContainer}>
@@ -44,11 +49,14 @@ const AccountCarroousel = ({ accounts }: AccountProp) => {
       <FlatList
         showsHorizontalScrollIndicator={false}
         snapToInterval={width - 30}
+        snapToAlignment="center"
         decelerationRate="fast"
         horizontal={true}
+        // viewabilityConfig={viewConfigRef.current}
         data={accounts}
         renderItem={renderItem}
         onMomentumScrollEnd={onMomentumScrollEnd}
+        nestedScrollEnabled
         keyExtractor={(account) => account.id}
       />
     </View>

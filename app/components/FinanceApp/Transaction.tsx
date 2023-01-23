@@ -1,22 +1,24 @@
 import React from "react"
 import { View, ViewStyle, FlatList, Image, TextStyle, Pressable, Text } from "react-native"
+import img6 from "../images/line.png"
+import { useRoute } from "@react-navigation/native"
+import { navigate } from "../../navigators"
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated"
 import TransactionCard from "./TransactionCard"
 import { colors, spacing, typography } from "../../theme"
 import { useColorScheme } from "react-native"
 import { transaction } from "./AccountInterface"
-import img6 from "../images/line.png"
 
-import { useRoute } from "@react-navigation/native"
-import { navigate } from "../../navigators"
 
 interface TransactionProp {
   transactions: transaction[]
+  CurrentAccount?: number
 }
 interface IRender {
   item: transaction
 }
 
-const Transaction = ({ transactions }: TransactionProp) => {
+const Transaction = ({ transactions, CurrentAccount }: TransactionProp) => {
   const theme = useColorScheme()
   const route = useRoute()
 
@@ -28,40 +30,41 @@ const Transaction = ({ transactions }: TransactionProp) => {
   )
 
   return (
-    <View>
+    <Animated.View entering={FadeIn.delay(300)} exiting={FadeOut.duration(5)} key={CurrentAccount}>
       <View style={{ ...$transactionsContainer, backgroundColor: colors[theme].cardBackground }}>
         <View style={$transactionsTitle}>
           <Text style={{ ...$Title, color: colors[theme].text }}> Recent transaction</Text>
-          <Pressable style={$logoContainer}>
+          <Pressable style={$logoContainer} onPress={() => navigate("AllTransactionsScreen")}>
             <Image source={img6}></Image>
           </Pressable>
         </View>
         <FlatList
-          data={route.name === "AccountScreen" ? transactions.slice(0, 5) : transactions}
+          data={route.name === "AccountScreen" ? transactions : transactions}
           keyExtractor={(Transaction) => Transaction.id}
           renderItem={renderItem}
+          scrollEnabled={false}
+          
         />
-        {route.name === "AccountScreen" && (
+        {/* {route.name === "AccountScreen" && (
           <Pressable style={$PressableBotton} onPress={() => navigate("AllTransactionsScreen")}>
             <Text style={{ ...$ButtonText, color: colors[theme].text }}> All Transactions</Text>
           </Pressable>
-        )}
+        )} */}
       </View>
-    </View>
+    </Animated.View>
   )
 }
 
-
-const $PressableBotton:  ViewStyle = {
+const $PressableBotton: ViewStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: "transparent",
-  width: '50%',
-  height:'8%',
+  width: "50%",
+  height: "8%",
   alignSelf: "center",
-  
-  marginTop: 50,
+
+  marginTop: 110,
 }
 
 const $ButtonText: TextStyle = {
@@ -72,14 +75,13 @@ const $ButtonText: TextStyle = {
 const $transactionsContainer: ViewStyle = {
   backgroundColor: colors.whiteBackground,
   width: "93%",
-  
+
   marginLeft: "auto",
   marginRight: "auto",
   borderRadius: 30,
   paddingHorizontal: spacing.large,
   paddingTop: spacing.large,
-  paddingBottom: "30%",
- 
+  paddingBottom: "10%",
 }
 
 const $transactionsTitle: ViewStyle = {

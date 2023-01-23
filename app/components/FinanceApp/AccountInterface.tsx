@@ -1,7 +1,9 @@
 
 export interface account {
-  id: string
+  id: string 
   currentBalance: number | string
+  name:string
+ 
 }
 
 export interface transaction {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import {
+  RefreshControl,
   Text,
   View,
   useColorScheme,
@@ -9,8 +10,7 @@ import {
   Pressable,
   Image,
 } from "react-native"
-import axios from "axios"
-import "../services/api/accountData"
+import "../services/api/api.mock"
 import { account, transaction } from "../components/FinanceApp/AccountInterface"
 import { colors, spacing, typography } from "../theme"
 import { SafeAreaView } from "react-native-safe-area-context"
@@ -19,34 +19,58 @@ import { useSafeAreaInsets } from "react-native-safe-area-context"
 import AccountCarroousel from "../components/FinanceApp/AccountCarroousel"
 import Transaction from "../components/FinanceApp/Transaction"
 import img7 from "../components/images/setting.png"
-import { ScrollView } from "react-native-gesture-handler"
-import { Button } from '../components/Button';
+import { api } from "../services/api"
+import { Screen } from '../components/Screen';
 
 
 const AccountScreen = () => {
   const [accounts, setAccounts] = useState<account[]>([])
   const [transactions, setTransactions] = useState<transaction[]>([])
+  const [isRefreshing, setIsRefreshing] = useState(false)
+  const [activeAccount, setActiveAccount] = useState(0)
 
   const theme = useColorScheme()
-  const { bottom } = useSafeAreaInsets()
+ 
+  
 
+  const refreshData = async () => {
+    ;(async () => {
+      setIsRefreshing(true)
+      const responseTransactions = await api.getTransactions(activeAccount)
+      setTransactions(responseTransactions.data)
+      setIsRefreshing(false)
+    })()
+  }
   useEffect(() => {
-    try {
-      ;(async () => {
-        const responseAccounts = await axios.get("/accounts")
-        const responseTransactions = await axios.get("/transactions")
-        setAccounts(responseAccounts.data.accounts)
-        setTransactions(responseTransactions.data.transactions)
-      })()
-    } catch (error) {
-      console.log(error)
-    }
+    ;(async () => {
+      const [AccountsResponse] = await Promise.all([api.getAccounts()])
+      setAccounts(AccountsResponse.data)
+    })()
   }, [])
 
+  useEffect(() => {
+    ;(async () => {
+      const TransactionsResponse = await api.getTransactions(activeAccount)
+      setTransactions(TransactionsResponse.data)
+    })()
+  }, [activeAccount])
   return (
-    <View style={$screenContainer}>
-      <SafeAreaView style={{ ...$container, backgroundColor: colors[theme].background }}>
-        <ScrollView style={$ScrollView}>
+    <Screen
+      style={{ ...$screenContainer, backgroundColor: colors[theme].background }}
+      preset="scroll"
+      ScrollViewProps={{
+        overScrollMode: "always",
+        refreshControl: (
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={refreshData}
+            tintColor="white"
+            colors={["#523CF8"]}
+          />
+        ),
+      }}
+    >
+      <SafeAreaView>
         <View style={$title}>
           <View style={$sectionLeft}></View>
           <Text style={$titleSection}> Account History</Text>
@@ -56,14 +80,10 @@ const AccountScreen = () => {
             </Pressable>
           </View>
         </View>
-
-        <AccountCarroousel accounts={accounts} />
-
-        <Transaction transactions={transactions} />
-       
-        </ScrollView>
+        <AccountCarroousel accounts={accounts} onChangeCurrentAccount={setActiveAccount} />
+        <Transaction transactions={transactions} CurrentAccount={activeAccount} />
       </SafeAreaView>
-    </View>
+    </Screen>
   )
 }
 const { width, height } = Dimensions.get("window")
@@ -118,3 +138,15 @@ const $logoContainer: ViewStyle = {
 // iOS con iOS versión 11 o posterior.
 
 export default AccountScreen
+// useEffect(() => {
+  //   try {
+  //     ;(async () => {
+  //       const responseAccounts = await axios.get("/accounts")
+  //       const responseTransactions = await axios.get("/transactions")
+  //       setAccounts(responseAccounts.data.accounts)
+  //       setTransactions(responseTransactions.data.transactions)
+  //     })()
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }, [])

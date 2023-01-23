@@ -24,7 +24,7 @@ const AccountCard = ({ accountData }: AccountCardProps) => {
     <View style={{ ...$cardContainer, backgroundColor: colors[theme].cardBackground }}>
       <View style={$sectionContainer}>
         <View>
-          <Text style={{ ...$cardTitle, color: colors[theme].text }}>Current Account</Text>
+          <Text style={{ ...$cardTitle, color: colors[theme].text }}>{accountData.name}</Text>
           <Text style={{ ...$cardId, color: colors[theme].description }}>{accountData.id}</Text>
         </View>
         <View style={$logoContainer}>

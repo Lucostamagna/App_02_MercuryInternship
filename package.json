@@ -45,7 +45,7 @@
     "@react-navigation/stack": "~6.2.1",
     "@types/react-native-snap-carousel": "^3.8.5",
     "apisauce": "2.1.5",
-    "axios": "^1.2.2",
+    "axios": "^1.2.3",
     "date-fns": "^2.29.2",
     "expo": "~46.0.17",
     "expo-application": "~4.2.2",

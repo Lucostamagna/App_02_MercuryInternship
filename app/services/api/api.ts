@@ -5,14 +5,11 @@
  * See the [Backend API Integration](https://github.com/infinitered/ignite/blob/master/docs/Backend-API-Integration.md)
  * documentation for more details.
  */
-import {
-  ApisauceInstance,
-  create,
-} from "apisauce"
+// import { ApisauceInstance, create,} from "apisauce"
+import { ApisauceInstance, create } from "apisauce"
 import Config from "../../config"
-import type {
-  ApiConfig,
-} from "./api.types"
+import type { ApiConfig,} from "./api.types"
+import { account, transaction } from "../../components/FinanceApp/AccountInterface"
 
 /**
  * Configuring the apisauce instance.
@@ -42,6 +39,14 @@ export class Api {
         Accept: "application/json",
       },
     })
+  }
+
+
+  getAccounts() {
+    return this.apisauce.get<account[]>("/accounts")
+  }
+  getTransactions(accountId: number) {
+    return this.apisauce.get<transaction[]>(`/accounts/${accountId}/transactions`)
   }
 
 }

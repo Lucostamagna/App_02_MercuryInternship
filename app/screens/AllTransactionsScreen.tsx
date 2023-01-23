@@ -6,25 +6,35 @@ import { transaction } from "../components/FinanceApp/AccountInterface"
 import { Screen } from "../components"
 import { colors } from "../theme"
 import { spacing } from '../theme/spacing';
+import { api } from '../services/api';
 
 const AllTransactionsScreen = () => {
   const [transactions, setTransactions] = useState<transaction[]>([])
+  const [activeAccount, setActiveAccount] = useState(0)
 
   const theme = useColorScheme()
+
   useEffect(() => {
     try {
       ;(async () => {
-        const responseTransactions = await axios.get("/transactions")
-        setTransactions(responseTransactions.data.transactions)
+        const responseTransactions = await api.getTransactions(5)
+        setTransactions(responseTransactions.data)
       })()
     } catch (error) {
       console.log(error)
     }
   }, [])
+
+
+
+
+
+ 
   return (
-    <Screen style={$Screen}>
+    <Screen style={$Screen}
+    preset="scroll">
       <View style={{ ...$View, backgroundColor: colors[theme].background }}>
-        <Transaction transactions={transactions} />
+        <Transaction transactions={transactions} CurrentAccount={activeAccount}/>
       </View>
     </Screen>
   )

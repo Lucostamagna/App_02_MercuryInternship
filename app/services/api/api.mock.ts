@@ -1,36 +1,39 @@
 
-import axios from "axios"
+
 import MockAdapter from "axios-mock-adapter"
+import { api } from "./api"
 import img1 from "../../components/images/CardIcon.png"
 import img2 from "../../components/images/RestaurantIcon.png"
 import img3 from "../../components/images/TravelltIcon.png"
 import img4 from "../../components/images/ConstructionIcon.png"
 import img5 from "../../components/images/PersonIcon.png"
+import { account, transaction } from "../../components/FinanceApp/AccountInterface"
 
-const mock = new MockAdapter(axios)
-mock.onGet("/accounts").reply(200, {
-  accounts: [
+const mock = new MockAdapter(api.apisauce.axiosInstance, { delayResponse: 300 })
+
+
+mock.onGet("/accounts").reply<account[]>(200, 
+   [
     {
+      name:"Current Account",
       id: "1234-4567-3456-3456",
-      currentBalance: 76451.0,
+      currentBalance: 76451.077,
     },
     {
+      name:"Savings",
       id: "1234-4567-3456-9999",
       currentBalance: 12455.0,
     },
     {
+      name:"Vacation",
       id: "1234-4567-3456-8888",
       currentBalance: 90.0,
     },
-    {
-      id: "1234-4567-3456-7777",
-      currentBalance: 51200.5,
-    },
-  ],
-})
+  
+  ])
 
-mock.onGet("/transactions").reply(200, {
-  transactions: [
+ 
+const transactions= [
     {
       id: `"Golub" Taxi Transportation`,
       title: `"Golub" Taxi Transportation`,
@@ -174,5 +177,26 @@ mock.onGet("/transactions").reply(200, {
       coin: "USD",
       img: img5,
     },
-  ],
-})
+  ]
+ 
+  let accountTransactionsCounters = {
+    [0]: 1,
+    [1]: 1,
+    [2]: 1,
+    [3]: 1,
+    [4]: transactions.length
+  }
+  
+const MAX_TRANSACTIONS = 5;
+
+mock.onGet(/\/accounts\/\d+\/transactions/).reply(config => {
+    const [, id] = config.url.match(/\/accounts\/(\d+)\/transactions/)
+    
+    if (!id || isNaN(id)) {
+        return [400, {error: 'Invalid account id'}];
+    }
+   
+
+    const res = Number(id)=== 4 ? transactions : transactions.slice(-Math.min(accountTransactionsCounters[id]++, MAX_TRANSACTIONS))
+    return [200, res]
+});

@@ -8,6 +8,7 @@ import {
   Pressable,
   Image,
 } from "react-native"
+import { observer } from "mobx-react-lite"
 import { colors, spacing, typography } from "../../theme"
 import { Text } from "../Text"
 import { account } from "./AccountInterface"
@@ -15,9 +16,10 @@ import { account } from "./AccountInterface"
 interface AccountCardProps {
   accountData: account
 }
-const { width } = Dimensions.get("screen")
 
-const AccountCard = ({ accountData }: AccountCardProps) => {
+export const AccountCard = observer(function AccountCard(props: AccountCardProps) {
+  const { accountData } = props
+
   const theme = useColorScheme()
 
   return (
@@ -51,13 +53,13 @@ const AccountCard = ({ accountData }: AccountCardProps) => {
       </View>
     </View>
   )
-}
+})
 
 export default AccountCard
 export const ACCOUNT_CARD_HORIZONTAL_MARGIN = 15
 export const ACCOUNT_CARD_HORIZONTAL_PADDING = 15
 export const NECCESARY_MAGIC_NUMBER = 60
-
+const { width } = Dimensions.get("screen")
 const $cardContainer: ViewStyle = {
   backgroundColor: "#FFFFFF",
   paddingHorizontal: ACCOUNT_CARD_HORIZONTAL_PADDING,

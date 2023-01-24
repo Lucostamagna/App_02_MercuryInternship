@@ -36,7 +36,7 @@ const AccountCarroousel = ({ accounts, onChangeCurrentAccount  }: AccountProp) =
 
   const renderItem = ({ item: account }: AccountRender) => <AccountCard accountData={account} />
   
-  // const viewConfigRef = React.useRef({ itemVisiblePercentThreshold: 50 })
+   const viewConfigRef = React.useRef({ itemVisiblePercentThreshold: 50 })
   return (
     <View style={$container}>
       <View style={$dotsContainer}>
@@ -52,7 +52,7 @@ const AccountCarroousel = ({ accounts, onChangeCurrentAccount  }: AccountProp) =
         snapToAlignment="center"
         decelerationRate="fast"
         horizontal={true}
-        // viewabilityConfig={viewConfigRef.current}
+        viewabilityConfig={viewConfigRef.current}
         data={accounts}
         renderItem={renderItem}
         onMomentumScrollEnd={onMomentumScrollEnd}

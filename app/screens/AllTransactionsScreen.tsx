@@ -1,23 +1,28 @@
-import React, {useState, useEffect} from 'react'
+import React, {FC, useState, useEffect} from 'react'
 import { View, ViewStyle, Dimensions, useColorScheme, } from 'react-native';
-import axios from 'axios';
+import { observer } from "mobx-react-lite"
+import { StackScreenProps } from "@react-navigation/stack"
+import { AppStackScreenProps } from "../navigators"
 import Transaction from "../components/FinanceApp/Transaction"
 import { transaction } from "../components/FinanceApp/AccountInterface"
 import { Screen } from "../components"
 import { colors } from "../theme"
+
 import { spacing } from '../theme/spacing';
 import { api } from '../services/api';
+// REMOVE ME! ⬇️ This TS ignore will not be necessary after you've added the correct navigator param type
+// @ts-ignore
 
-const AllTransactionsScreen = () => {
+
+export const AllTransactionsScreen: FC<StackScreenProps<AppStackScreenProps, "Transaction">> = observer(function AllTransactionsScreen() {
   const [transactions, setTransactions] = useState<transaction[]>([])
-  const [activeAccount, setActiveAccount] = useState(0)
 
   const theme = useColorScheme()
 
   useEffect(() => {
     try {
       ;(async () => {
-        const responseTransactions = await api.getTransactions(5)
+        const responseTransactions = await api.getTransactions(10)
         setTransactions(responseTransactions.data)
       })()
     } catch (error) {
@@ -25,20 +30,15 @@ const AllTransactionsScreen = () => {
     }
   }, [])
 
-
-
-
-
- 
   return (
     <Screen style={$Screen}
     preset="scroll">
       <View style={{ ...$View, backgroundColor: colors[theme].background }}>
-        <Transaction transactions={transactions} CurrentAccount={activeAccount}/>
+        <Transaction transactions={transactions} />
       </View>
     </Screen>
   )
-}
+})
 
 const $Screen: ViewStyle = {
   marginVertical: spacing.medium,
@@ -49,4 +49,4 @@ const $View: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
 }
-export default AllTransactionsScreen
+

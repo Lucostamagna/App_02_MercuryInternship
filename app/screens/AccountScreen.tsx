@@ -15,7 +15,6 @@ import { account, transaction } from "../components/FinanceApp/AccountInterface"
 import { colors, spacing, typography } from "../theme"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { navigate } from "../navigators"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
 import AccountCarroousel from "../components/FinanceApp/AccountCarroousel"
 import Transaction from "../components/FinanceApp/Transaction"
 import img7 from "../components/images/setting.png"
@@ -89,9 +88,6 @@ const AccountScreen = () => {
 const { width, height } = Dimensions.get("window")
 
 
-const $ScrollView: ViewStyle = {
-  flex:1
-}
 const $screenContainer: ViewStyle = {
   backgroundColor: colors.violetBackground,
   minHeight: height,

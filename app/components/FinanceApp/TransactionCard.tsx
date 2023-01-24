@@ -2,10 +2,7 @@ import React from "react"
 import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from "react-native"
 import { transaction } from "./AccountInterface"
 import { colors, spacing, typography } from "../../theme"
-import { ACCOUNT_CARD_HORIZONTAL_MARGIN } from "./AccountCard"
-import { ScrollView } from "react-native-gesture-handler"
-import { SafeAreaView } from "react-native-safe-area-context"
-import { Button } from "../Button"
+
 
 interface TransactionCardProps {
   transactionData: transaction
@@ -68,9 +65,7 @@ const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
 
 export default TransactionCard
 
-const $ScrollView:ViewStyle = {
-  flex: 1,
-}
+
 const $CardContainer: ViewStyle = {
   display: "flex",
   flexDirection: "row",

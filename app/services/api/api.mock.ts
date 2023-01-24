@@ -183,8 +183,7 @@ const transactions= [
     [0]: 1,
     [1]: 1,
     [2]: 1,
-    [3]: 1,
-    [4]: transactions.length
+    [3]: transactions.length
   }
   
 const MAX_TRANSACTIONS = 5;
@@ -197,6 +196,6 @@ mock.onGet(/\/accounts\/\d+\/transactions/).reply(config => {
     }
    
 
-    const res = Number(id)=== 4 ? transactions : transactions.slice(-Math.min(accountTransactionsCounters[id]++, MAX_TRANSACTIONS))
+    const res = Number(id)=== 3? transactions : transactions.slice(-Math.min(accountTransactionsCounters[id]++, MAX_TRANSACTIONS))
     return [200, res]
 });

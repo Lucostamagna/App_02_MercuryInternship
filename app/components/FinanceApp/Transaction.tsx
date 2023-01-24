@@ -1,5 +1,14 @@
 import React from "react"
-import { View, ViewStyle, FlatList, Image, TextStyle, Pressable, Text } from "react-native"
+import {
+  View,
+  ViewStyle,
+  FlatList,
+  Image,
+  TextStyle,
+  Pressable,
+  Text,
+  TouchableOpacity,
+} from "react-native"
 import img6 from "../images/line.png"
 import { useRoute } from "@react-navigation/native"
 import { navigate } from "../../navigators"
@@ -8,7 +17,6 @@ import TransactionCard from "./TransactionCard"
 import { colors, spacing, typography } from "../../theme"
 import { useColorScheme } from "react-native"
 import { transaction } from "./AccountInterface"
-
 
 interface TransactionProp {
   transactions: transaction[]
@@ -34,16 +42,18 @@ const Transaction = ({ transactions, CurrentAccount }: TransactionProp) => {
       <View style={{ ...$transactionsContainer, backgroundColor: colors[theme].cardBackground }}>
         <View style={$transactionsTitle}>
           <Text style={{ ...$Title, color: colors[theme].text }}> Recent transaction</Text>
-          <Pressable style={$logoContainer} onPress={() => navigate("AllTransactionsScreen")}>
+          <TouchableOpacity
+            style={$logoContainer}
+            onPress={() => navigate("AllTransactionsScreen")}
+          >
             <Image source={img6}></Image>
-          </Pressable>
+          </TouchableOpacity>
         </View>
         <FlatList
           data={route.name === "AccountScreen" ? transactions : transactions}
           keyExtractor={(Transaction) => Transaction.id}
           renderItem={renderItem}
           scrollEnabled={false}
-          
         />
         {/* {route.name === "AccountScreen" && (
           <Pressable style={$PressableBotton} onPress={() => navigate("AllTransactionsScreen")}>
@@ -97,12 +107,12 @@ const $Title: TextStyle = {
   fontFamily: typography.primary.semiBold,
 }
 const $logoContainer: ViewStyle = {
-  backgroundColor: colors.violetBackground,
+  backgroundColor: "#523CF8",
   width: 30,
   height: 30,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
   borderRadius: 15,
+  flexShrink: 0,
+  alignItems: "center",
+  justifyContent: "center",
 }
 export default Transaction

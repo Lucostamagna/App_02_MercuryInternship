@@ -17,7 +17,7 @@ import { useColorScheme } from "react-native"
 import Config from "../config"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import SettingsScreen from '../screens/SettingsScreen';
-import AllTransactionsScreen from '../screens/AllTransactionsScreen';
+import { AllTransactionsScreen}  from '../screens/AllTransactionsScreen';
 import AccountMenu from '../components/FinanceApp/AccountMenu';
 
 export type AppStackParamList = {

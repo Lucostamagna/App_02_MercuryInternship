@@ -5,7 +5,6 @@ import {
   FlatList,
   Image,
   TextStyle,
-  Pressable,
   Text,
   TouchableOpacity,
 } from "react-native"
@@ -17,6 +16,7 @@ import TransactionCard from "./TransactionCard"
 import { colors, spacing, typography } from "../../theme"
 import { useColorScheme } from "react-native"
 import { transaction } from "./AccountInterface"
+import { observer } from "mobx-react-lite"
 
 interface TransactionProp {
   transactions: transaction[]
@@ -26,7 +26,10 @@ interface IRender {
   item: transaction
 }
 
-const Transaction = ({ transactions, CurrentAccount }: TransactionProp) => {
+export const Transaction = observer(function Transaction( props:  TransactionProp,
+  )  {
+    const{ transactions, CurrentAccount}=props
+    
   const theme = useColorScheme()
   const route = useRoute()
 
@@ -63,7 +66,7 @@ const Transaction = ({ transactions, CurrentAccount }: TransactionProp) => {
       </View>
     </Animated.View>
   )
-}
+})
 
 const $PressableBotton: ViewStyle = {
   display: "flex",

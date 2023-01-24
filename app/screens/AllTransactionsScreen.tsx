@@ -42,6 +42,7 @@ export const AllTransactionsScreen: FC<StackScreenProps<AppStackScreenProps, "Tr
 
 const $Screen: ViewStyle = {
   marginVertical: spacing.medium,
+  flex:1
 }
 
 const $View: ViewStyle = {

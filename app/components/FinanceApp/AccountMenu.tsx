@@ -19,9 +19,9 @@ import img4 from "../images/archive.png"
 import DashboardScreen from "../../screens/DashboardScreen"
 import CardsScreen from "../../screens/CardsScreen"
 import PaymentScreen from "../../screens/PaymentScreen"
-import AccountScreen from "../../screens/AccountScreen"
+import {AccountScreen} from "../../screens/AccountScreen"
 
-const { width } = Dimensions.get("window")
+
 
 export type MenuList = {
   DashboardScreen: undefined
@@ -93,6 +93,7 @@ const AccountMenu = () => {
 }
 
 export default AccountMenu
+const { width } = Dimensions.get("window")
 // const $menuContainer: ViewStyle = {
 //   display: "flex",
 //   flexDirection: "row",

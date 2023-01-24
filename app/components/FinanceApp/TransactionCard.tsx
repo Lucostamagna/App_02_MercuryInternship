@@ -1,6 +1,7 @@
 import React from "react"
 import { View, useColorScheme, ViewStyle, Text, TextStyle, Image } from "react-native"
 import { transaction } from "./AccountInterface"
+import { observer } from "mobx-react-lite"
 import { colors, spacing, typography } from "../../theme"
 
 
@@ -15,7 +16,9 @@ const colorAccount = (n: number) => {
   return color
 }
 
-const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
+export const TransactionCard =observer(function TransactionCard(props: TransactionCardProps)  {
+  const {transactionData, Id}=props
+
   const theme = useColorScheme()
 
   return (
@@ -61,10 +64,7 @@ const TransactionCard = ({ transactionData, Id }: TransactionCardProps) => {
    
     
   )
-}
-
-export default TransactionCard
-
+})
 
 const $CardContainer: ViewStyle = {
   display: "flex",

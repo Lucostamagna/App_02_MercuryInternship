@@ -12,7 +12,7 @@ import img6 from "../images/line.png"
 import { useRoute } from "@react-navigation/native"
 import { navigate } from "../../navigators"
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated"
-import TransactionCard from "./TransactionCard"
+import {TransactionCard} from "./TransactionCard"
 import { colors, spacing, typography } from "../../theme"
 import { useColorScheme } from "react-native"
 import { transaction } from "./AccountInterface"
@@ -118,4 +118,4 @@ const $logoContainer: ViewStyle = {
   alignItems: "center",
   justifyContent: "center",
 }
-export default Transaction
+

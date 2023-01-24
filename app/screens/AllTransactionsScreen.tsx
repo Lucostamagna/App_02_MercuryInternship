@@ -3,7 +3,7 @@ import { View, ViewStyle, Dimensions, useColorScheme, } from 'react-native';
 import { observer } from "mobx-react-lite"
 import { StackScreenProps } from "@react-navigation/stack"
 import { AppStackScreenProps } from "../navigators"
-import Transaction from "../components/FinanceApp/Transaction"
+import {Transaction} from "../components/FinanceApp/Transaction"
 import { transaction } from "../components/FinanceApp/AccountInterface"
 import { Screen } from "../components"
 import { colors } from "../theme"

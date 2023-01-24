@@ -9,6 +9,7 @@ import {
   View,
   Image,
 } from "react-native"
+import { observer } from "mobx-react-lite"
 import AccountCard from "./AccountCard"
 import { spacing } from "../../theme"
 import active from "../images/active.png"
@@ -23,9 +24,9 @@ interface AccountRender {
   item: account
 }
 
-const { width } = Dimensions.get("screen")
-
-const AccountCarroousel = ({ accounts, onChangeCurrentAccount  }: AccountProp) => {
+export const AccountCarroousel = observer(function AccountCarroousel(props: AccountProp)  {
+  
+  const {accounts, onChangeCurrentAccount} = props
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const onMomentumScrollEnd = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -61,10 +62,10 @@ const AccountCarroousel = ({ accounts, onChangeCurrentAccount  }: AccountProp) =
       />
     </View>
   )
-}
+})
 
-export default AccountCarroousel
 
+const { width } = Dimensions.get("screen")
 const $container: ViewStyle = {
   marginBottom: spacing.medium,
 }
